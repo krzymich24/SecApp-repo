@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+<body>
+    <header>
+    </header>
+    <nav id="nav">
+        <span id = "container-menu" class="container-menu">
+          <span class="checkbox-container">
+            <input id="checkbox-trigger" class="checkbox-trigger" type="checkbox"  />
+            <span class="menu-content">
+                <ul>
+                  <li>Home</li>
+                  <li>About</li>
+                  <li>Contact</li>
+                  <li>Forum</li>
+                  <li>MyCars</li>
+                  <li>Motopedia</li>
+               </ul>
+             <span class="hamburger-menu"></span>
+           </span>
+         </span>
+        </span>
+        <button class="login-button" onclick="document.getElementById('login').style.display='block'" style="width:auto;">Login</button>
+    </nav>
+    <main id="main">
+    </main>
+    <footer>
+       <h2>Owned by ZKK Company</h2> 
+    </footer>
+    <div id="login" class="modal">
+    
+    <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+        <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <img src="img\img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container-login">
+        <label for="uname"><b>Username</b></label>
+        <input id="Username" type="text" placeholder="Enter Username" name="uname" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input id="Passwd" type="password" placeholder="Enter Password" name="psw" required>
+            
+        <button class="login-button-submit" type="submit">Login</button>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+        </div>
+
+        <div class="container-login" style="background-color:#f1f1f1; border-radius: 50px">
+        <button class="cancelbtn" type="button" onclick="document.getElementById('login').style.display='none'">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+    </div>
+
+</body>
+</html>

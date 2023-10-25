@@ -1,0 +1,82 @@
+User
+
+User ID
+Cred ID
+Car ID
+Rule ID
+Koszty uzytkownika ID
+Przebieg ID
+Serwis ID
+
+
+Credentcial
+
+Cred ID
+Name
+Surname
+Display Name
+Nick
+Mail
+Password
+User ID
+Rule ID
+Car
+
+Car ID
+Model
+Marka
+Rok
+Paliwo
+Generacja
+Segment
+Typ nadwozia
+Typ auta
+Rodzaj napedu
+Wersja wyposazenia
+Kraj pochodzenia
+Koszt uzytkowania ID
+VIN
+Kolor
+Liczba drzwi
+Ilosc miejsc
+Skrzynia biegow
+pojemnosc silnika
+moc
+Koszt calkowity
+User ID
+Przebieg ID
+Serwisy ID
+
+Koszty
+
+Koszt uzytkowania ID
+Timestamp
+Opis
+Koszt
+User ID
+Car ID
+
+Rule
+
+Rule ID
+Typ roli
+UserID
+Cred ID
+
+Mileage
+
+Przebieg ID
+User ID
+Przebieg
+Przebieg ostatnio dodany
+Zuzyte paliwo
+Timestamp
+
+Serwis
+Serwis ID
+rzeczy do wymiany
+ostatnio wymienione 
+User ID
+Przebieg ID
+Car ID
+
