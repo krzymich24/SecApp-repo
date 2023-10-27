@@ -19,6 +19,22 @@ header{
   float: inline-start;
 }
 
+.header-container{
+  width: 10%;
+  height: 100%;
+  min-height: 100px;
+  /*background-color: #f44336;*/
+  float: right;
+}
+
+.header-logo{
+  width: 90%;
+  height: 100%;
+  min-height: 100px;
+  /*background-color: aqua;*/
+  float: left;
+}
+
 /*Navigation option*/
 nav{
   /*background-color: #61d6d0;*/
@@ -73,10 +89,10 @@ margin: 8px 0;
 border: none;
 cursor: pointer;
 width: 100%;
-top: 0px;
-/*position: fixed;
+top: 48px;
+position: fixed;
 right: 0px;
-font-size: 14px;*/
+font-size: 14px;
 }
 
 .login-button-submit {
