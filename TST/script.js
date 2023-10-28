@@ -8,8 +8,7 @@ window.onclick = function(event) {
     }
 }
 
-
-
+//sliding menu
 document.addEventListener("DOMContentLoaded", function() {
  // Get a reference to the clickable div by its id
  const main = document.getElementById('main');

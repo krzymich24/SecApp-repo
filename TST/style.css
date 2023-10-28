@@ -27,6 +27,14 @@ header{
   float: right;
 }
 
+.avatar-site{
+  width: 50px;
+  height: 50px;
+  position: relative;
+  top: 3px;
+  left: 78px;
+}
+
 .header-logo{
   width: 90%;
   height: 100%;
@@ -70,6 +78,22 @@ footer{
   text-align: center;
 }
 
+/*link options*/
+a{
+  text-decoration: none; /* Remove underline */
+  color: #000000; /* Change link color to red (#FF0000) */
+}
+
+a:hover{
+  text-decoration: none; /* Remove underline */
+  color: #000000; /* Change link color to red (#FF0000) */
+}
+
+a:visited{
+  text-decoration: none; /* Remove underline */
+  color: #000000; /* Change link color to red (#FF0000) */
+}
+
 /* Full-width input fields on login screen */
 #Username,#Passwd{
 width: 100%;
@@ -84,15 +108,17 @@ box-sizing: border-box;
 .login-button{
 background-color: #5a5a5a;
 color: white;
-padding: 14px 20px;
+padding: 12px 18px;
 margin: 8px 0;
 border: none;
 cursor: pointer;
 width: 100%;
 top: 48px;
 position: fixed;
-right: 0px;
+right: 2px;
 font-size: 14px;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+border-radius: 12px;
 }
 
 .login-button-submit {
@@ -335,4 +361,19 @@ section {
 .menu-content ul li:hover {
   color: #0CD6AD;
   background: #1E332F;
+}
+
+.link-menu{
+  text-decoration: none; /* Remove underline */
+  color: #ffffff; /* Change link color to red (#FF0000) */
+}
+
+.link-menu:hover{
+  text-decoration: none; /* Remove underline */
+  color: #ffffff; /* Change link color to red (#FF0000) */
+}
+
+.link-menu:visited{
+  text-decoration: none; /* Remove underline */
+  color: #ffffff; /* Change link color to red (#FF0000) */
 }

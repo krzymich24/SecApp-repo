@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+<body>
+    <header>
+      <div class="header-logo">
+        <p> here will be logo</p>
+      </div>
+      <div class="header-container">
+        <img src="img/img_avatar_site.png" alt="Avatar on Site" id="avatar-site" class="avatar-site">
+        <button class="login-button" onclick="document.getElementById('login').style.display='block'" style="width:auto;">LOGIN</button>
+      </div>
+    </header>
+    <nav id="nav">
+        <span id = "container-menu" class="container-menu">
+          <span class="checkbox-container">
+            <input id="checkbox-trigger" class="checkbox-trigger" type="checkbox"  />
+            <span class="menu-content">
+                <ul>
+                  <a href="home.html" class="link-menu"><li>Home</li></a>
+                  <a href="about.html" class="link-menu"><li>About</li></a>
+                  <a href="contact.html" class="link-menu"><li>Contact</li></a>
+                  <a href="forum.html" class="link-menu"><li>Forum</li></a>
+                  <a href="mycars.html" class="link-menu"><li>MyCars</li></a>
+                  <a href="motopedia.html" class="link-menu"><li>Motopedia</li></a>
+               </ul>
+             <span class="hamburger-menu"></span>
+           </span>
+         </span>
+        </span>
+    </nav>
+    <main id="main">
+      <p>Forum</p>
+    </main>
+    <footer>
+       <h2>Owned by ZKK Company</h2> 
+    </footer>
+    <div id="login" class="modal">
+    
+    <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+        <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <img src="img\img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container-login">
+        <label for="uname"><b>Username</b></label>
+        <input id="Username" type="text" placeholder="Enter Username" name="uname" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input id="Passwd" type="password" placeholder="Enter Password" name="psw" required>
+            
+        <button class="login-button-submit" type="submit">Login</button>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+        </div>
+
+        <div class="container-login" style="background-color:#f1f1f1; border-radius: 50px">
+        <button class="cancelbtn" type="button" onclick="document.getElementById('login').style.display='none'">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+    </div>
+
+</body>
+</html>
