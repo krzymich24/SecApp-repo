@@ -1,22 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: "people" })
+@Entity({ name: 'people' })
 export class Person {
-  @PrimaryGeneratedColumn()
-  id!: number;
+  @PrimaryGeneratedColumn() id!: string;
 
-  @Column({ name: "fullname" })
-  fullName!: string;
+  @Column() username!: string;
 
-  @Column()
-  gender!: string;
+  @Column() password!: string;
 
-  @Column()
-  phone!: string;
-
-  @Column()
-  age!: number;
-
-  @Column({ name: "created_at", default: new Date(Date.now()) })
+  @Column({ name: 'created_at', default: new Date(Date.now()) })
   createdAt?: Date;
 }

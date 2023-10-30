@@ -3,4 +3,25 @@ Content-Type: application/json
 
 {}
 
+### Good login
+
+PUT http://localhost:3000/person/login?username=admin&password=admin
+Content-Type: application/json
+
+{}
+
+### Bad password
+
+PUT http://localhost:3000/person/login?username=admin&password=janusz
+Content-Type: application/json
+
+{}
+
+### Bad username
+
+PUT http://localhost:3000/person/login?username=janusz&password=admin
+Content-Type: application/json
+
+{}
+
 ###
