@@ -10,11 +10,10 @@ export function LogIn() {
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
             <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In
-              deleniti eaque aut repudiandae et a id nisi.
+              Log in and get access to full content of this application.
             </p>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl">
             <form className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -36,8 +35,13 @@ export function LogIn() {
                 </label>
                 <input type="password" placeholder="password" className="input input-bordered" required />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  <a href="/Recovery" className="label-text-alt link link-hover">
                     Forgot password?
+                  </a>
+                </label>
+                <label className="label">
+                  <a href="/SignIn" className="label-text-alt link link-hover">
+                    Dont have an Account? Sign in
                   </a>
                 </label>
               </div>
