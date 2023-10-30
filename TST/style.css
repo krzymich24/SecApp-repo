@@ -58,11 +58,11 @@ nav{
 /*Content field option*/
 main{
   background-color: #8ecaff;
-  width: calc(100% - 50px);
+  width: calc(100% - 90px);
   height: 80%;
-  min-height: 542px;
+  min-height: 502px;
   margin: 0px;
-  padding: 0px;
+  padding: 20px;
   float: left;
 }
 

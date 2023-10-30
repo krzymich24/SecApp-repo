@@ -22,16 +22,16 @@ document.addEventListener("DOMContentLoaded", function() {
     //alert('JavaScript started!');
     // Add your JavaScript code here
     
-    if (main.style.width == '83%'){
+    if (main.style.width == `calc(83% - 40px)`){
        // Add a 1-second delay before changing the width
       setTimeout(function() {
-        main.style.width = `calc(100% - 50px)`;
+        main.style.width = `calc(100% - 90px)`;
         nav.style.width = '50px';
         container.style.width = '50px';
         container.style.minHeight = '45px';
       }, 1000); // 1000 milliseconds (1 second)
     }else{
-      main.style.width = '83%';
+      main.style.width = `calc(83% - 40px)`;
       nav.style.width = '17%';
       container.style.width = '17%';
       container.style.minHeight = '333px';
