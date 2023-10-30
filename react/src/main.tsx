@@ -1,4 +1,4 @@
-// import "./index.css";
+import "./index.css";
 import { createRoot } from "react-dom/client";
 import { HashRouter, Outlet, Route, Routes } from "react-router-dom";
 import React from "react";
