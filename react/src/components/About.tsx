@@ -1,4 +1,4 @@
-export function Forum() {
+export function About() {
   return (
     <>
       <div className="dropdown dropdown-hover">

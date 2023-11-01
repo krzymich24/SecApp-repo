@@ -6,6 +6,12 @@ import { LogIn } from './components/LogIn';
 import { Chat } from './components/Chat';
 import { Home } from './components/Home';
 import { Forum } from './components/Forum';
+import { Recovery } from './components/Recovery';
+import { SignIn } from './components/SignIn';
+import { About } from './components/About';
+import { Contact } from './components/Contact';
+import { Motopedia } from './components/Motopedia';
+import { MyCars } from './components/MyCars';
 
 const App = document.getElementById('root');
 
@@ -13,7 +19,7 @@ function Header() {
   return (
     <header className="navbar bg-base-100">
       <div className="flex-1">
-        <a href="/" className="btn-ghost btn text-xl normal-case">
+        <a href="#/home" className="btn-ghost btn text-xl normal-case">
           MasterGarageHub
         </a>
       </div>
@@ -51,6 +57,8 @@ function Header() {
     </header>
   );
 }
+
+
 
 function Footer() {
   return (
@@ -111,9 +119,15 @@ const Root = () => (
     <Routes>
       <Route path="/" element={<Body />}>
         <Route path="login" element={<LogIn />} />
-        <Route path="chat" element={<Chat />} />
+        <Route path="/login/recovery" element={<Recovery />} />
+        <Route path="/login/signin" element={<SignIn />} />
         <Route path="home" element={<Home />} />
-        <Route path="forum" element={<Forum />} />
+        <Route path="/home/chat" element={<Chat />} />
+        <Route path="/home/forum" element={<Forum />} />
+        <Route path="/home/about" element={<About />} />
+        <Route path="/home/contact" element={<Contact />} />
+        <Route path="/home/motopedia" element={<Motopedia />} />
+        <Route path="/home/mycars" element={<MyCars />} />
       </Route>
     </Routes>
   </HashRouter>

@@ -35,12 +35,12 @@ export function LogIn() {
                 </label>
                 <input type="password" placeholder="password" className="input input-bordered" required />
                 <label className="label">
-                  <a href="/Recovery" className="label-text-alt link link-hover">
+                  <a href="/#/login/recovery" className="label-text-alt link link-hover">
                     Forgot password?
                   </a>
                 </label>
                 <label className="label">
-                  <a href="/SignIn" className="label-text-alt link link-hover">
+                  <a href="/#/login/signin" className="label-text-alt link link-hover">
                     Dont have an Account? Sign in
                   </a>
                 </label>
