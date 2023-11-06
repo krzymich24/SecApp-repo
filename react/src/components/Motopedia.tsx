@@ -41,6 +41,181 @@ export function Motopedia() {
           </a></li>
         </ul>
       </div>
+
+      <div className="carousel rounded-box">
+        <div className="carousel-item">
+          <img src="src/assets/img/renault-logo.jpg" alt="Renault" />
+        </div>
+        <div className="carousel-item">
+          <img src="src/assets/img/audi-logo.jpg" alt="Audi" />
+        </div>
+        <div className="carousel-item">
+          <img src="src/assets/img/bmw-logo.jpg" alt="BMW" />
+        </div>
+        <div className="carousel-item">
+          <img src="src/assets/img/mercedes-logo.png" alt="Mercedes" />
+        </div>
+        <div className="carousel-item">
+          <img src="src/assets/img/volkswagen-logo.jpg" alt="Volkswagen" />
+        </div>
+        <div className="carousel-item">
+          <img src="src/assets/img/mazda-logo.png" alt="Mazda" />
+        </div>
+        <div className="carousel-item">
+          <img src="src/assets/img/nissan-logo.jpg" alt="Nissan" />
+        </div>
+        <div className="carousel-item">
+          <img src="src/assets/img/honda-logo.png" alt="Honda" />
+        </div>
+        <div className="carousel-item">
+          <img src="src/assets/img/toyota-logo.png" alt="Toyota" />
+        </div>
+        <div className="carousel-item">
+          <img src="src/assets/img/hyundai-logo.jpg" alt="Hyundai" />
+        </div>
+        <div className="carousel-item">
+          <img src="src/assets/img/suzuki-logo.png" alt="Suzuki" />
+        </div>
+        <div className="carousel-item">
+          <img src="src/assets/img/lexus-logo.jpg" alt="Lexus" />
+        </div>
+      </div>
+
+      <div className="overflow-x-auto">
+        <table className="table-full-width">
+          {/* head */}
+          <thead>
+          <tr>
+            <th>
+            </th>
+            <th>
+            </th>
+            <th>Model</th>
+            <th>Years</th>
+            <th>Generation</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          {/* row 1 */}
+          <tr>
+            <th>
+              <label>
+              </label>
+            </th>
+            <td>
+              <div className="flex items-center space-x-3" >
+                <div className="avatar" >
+                  <div className="mask mask-squircle w-12 h-12" >
+                    <img src="/src/assets/img/cars/renault-megane-1-gen.jpg" alt="Megane gen 1" />
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td className="td-motopedia">
+                  <div className="font-bold" >Megane</div>
+            </td>
+            <td className="td-motopedia">
+              <div className="font-bold">1999 - 2220</div>
+            </td>
+            <td className="td-motopedia">I</td>
+            <th>
+              <button className="btn btn-ghost btn-xs">More Details</button>
+            </th>
+          </tr>
+          {/* row 2 */}
+          <tr>
+            <th>
+              <label>
+              </label>
+            </th>
+            <td>
+              <div className="flex items-center space-x-3" >
+                <div className="avatar" >
+                  <div className="mask mask-squircle w-12 h-12" >
+                    <img src="/src/assets/img/cars/renault-megane-2-gen.jpg" alt="Megane gen 2" />
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td className="td-motopedia">
+              <div className="font-bold" >Megane</div>
+            </td>
+            <td className="td-motopedia">
+              <div className="font-bold">2010 - 2220</div>
+            </td>
+            <td className="td-motopedia">II</td>
+            <th>
+              <button className="btn btn-ghost btn-xs">More Details</button>
+            </th>
+          </tr>
+          {/* row 3 */}
+          <tr>
+            <th>
+              <label>
+              </label>
+            </th>
+            <td>
+              <div className="flex items-center space-x-3" >
+                <div className="avatar" >
+                  <div className="mask mask-squircle w-12 h-12" >
+                    <img src="/src/assets/img/cars/renault-megane-3-gen.jpg" alt="Megane gen 3" />
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td className="td-motopedia">
+              <div className="font-bold" >Megane</div>
+            </td>
+            <td className="td-motopedia">
+              <div className="font-bold">2015 - 2220</div>
+            </td>
+            <td className="td-motopedia">III</td>
+            <th>
+              <button className="btn btn-ghost btn-xs">More Details</button>
+            </th>
+          </tr>
+          {/* row 4 */}
+          <tr>
+            <th>
+              <label>
+              </label>
+            </th>
+            <td>
+              <div className="flex items-center space-x-3" >
+                <div className="avatar" >
+                  <div className="mask mask-squircle w-12 h-12" >
+                    <img src="/src/assets/img/cars/renault-megane-4-gen.jpg" alt="Megane gen 4" />
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td className="td-motopedia">
+              <div className="font-bold" >Megane</div>
+            </td>
+            <td className="td-motopedia">
+              <div className="font-bold">2022 - 2220</div>
+            </td>
+            <td className="td-motopedia">IV</td>
+            <th>
+              <button className="btn btn-ghost btn-xs">More Details</button>
+            </th>
+          </tr>
+          </tbody>
+          {/* foot */}
+          <tfoot>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          </tfoot>
+
+        </table>
+      </div>
     </>
   );
 }

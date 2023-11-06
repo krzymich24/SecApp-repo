@@ -5,6 +5,12 @@
 
 @layer base {
     body {
-        @apply bg-zinc-50;
+        @apply bg-base-200;
+    }
+    .table-full-width{
+      width: 100%;
+    }
+    .td-motopedia {
+      text-align: center;
     }
 }
