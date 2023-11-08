@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 
 export function LogIn() {
   const [username, setUsername] = useState<string>();
@@ -35,14 +36,14 @@ export function LogIn() {
                 </label>
                 <input type="password" placeholder="password" className="input input-bordered" required />
                 <label className="label">
-                  <a href="/#/login/recovery" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
+                  <Link to="/recovery">
+                    <p className="label-text-alt link link-hover">Forgot password?</p>
+                  </Link>
                 </label>
                 <label className="label">
-                  <a href="/#/login/signin" className="label-text-alt link link-hover">
-                    Dont have an Account? Sign in
-                  </a>
+                  <Link to="/signin">
+                    <p className="label-text-alt link link-hover">Dont have an Account? Sign in</p>
+                  </Link>
                 </label>
               </div>
               <div className="form-control mt-6">

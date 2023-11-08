@@ -19,13 +19,13 @@ function Header() {
   return (
     <header className="navbar bg-base-100">
       <div className="flex-1">
-        <a href="#/home" className="btn-ghost btn text-xl normal-case">
-          MasterGarageHub
-        </a>
+        <Link to="home">
+          <p className="btn-ghost btn text-xl normal-case">MasterGarageHub</p>
+        </Link>
       </div>
 
       <div className="flex-none gap-2">
-        <Link to="/login">
+        <Link to="login">
           <button className="btn-primary btn ">Log In</button>
         </Link>
         <div className="dropdown-end dropdown">
@@ -118,16 +118,16 @@ const Root = () => (
   <HashRouter>
     <Routes>
       <Route path="/" element={<Body />}>
-        <Route path="login" element={<LogIn />} />
-        <Route path="/login/recovery" element={<Recovery />} />
-        <Route path="/login/signin" element={<SignIn />} />
-        <Route path="home" element={<Home />} />
-        <Route path="/home/chat" element={<Chat />} />
-        <Route path="/home/forum" element={<Forum />} />
-        <Route path="/home/about" element={<About />} />
-        <Route path="/home/contact" element={<Contact />} />
-        <Route path="/home/motopedia" element={<Motopedia />} />
-        <Route path="/home/mycars" element={<MyCars />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/recovery" element={<Recovery />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/forum" element={<Forum />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/motopedia" element={<Motopedia />} />
+        <Route path="/mycars" element={<MyCars />} />
       </Route>
     </Routes>
   </HashRouter>
