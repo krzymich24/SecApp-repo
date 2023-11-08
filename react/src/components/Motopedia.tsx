@@ -41,7 +41,6 @@ export function Motopedia() {
           </a></li>
         </ul>
       </div>
-
       <div className="carousel rounded-box">
         <div className="carousel-item">
           <img src="src/assets/img/renault-logo.jpg" alt="Renault" />
@@ -80,7 +79,7 @@ export function Motopedia() {
           <img src="src/assets/img/lexus-logo.jpg" alt="Lexus" />
         </div>
       </div>
-
+      <div className="spacer"></div>
       <div className="overflow-x-auto">
         <table className="table-full-width">
           {/* head */}
