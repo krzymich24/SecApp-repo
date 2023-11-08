@@ -16,4 +16,11 @@
     .spacer {
       height: 100px; /* Adjust the height to control the spacing */
     }
+    .label-text-login{
+      padding: 10px;
+      font-size: 20px;
+      width: 100%;
+      text-align: center;
+      border-radius: 6px;
+    }
 }
