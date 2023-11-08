@@ -36,14 +36,10 @@ export function LogIn() {
                 </label>
                 <input type="password" placeholder="password" className="input input-bordered" required />
                 <label className="label">
-                  <Link to="/recovery">
-                    <p className="label-text-alt link link-hover">Forgot password?</p>
-                  </Link>
+                  <Link to="/recovery" className="label-text-alt link link-hover">Forgot password?</Link>
                 </label>
-                <label className="label">
-                  <Link to="/signin">
-                    <p className="label-text-alt link link-hover">Dont have an Account? Sign in</p>
-                  </Link>
+                <label className="label" >
+                  <Link to="/signin" className="label-text-alt link link-hover">Don't have an Account? Sign in</Link>
                 </label>
               </div>
               <div className="form-control mt-6">
