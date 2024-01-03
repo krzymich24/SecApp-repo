@@ -49,7 +49,7 @@ export function Home() {
           <p></p>
           <div className="card-actions justify-end">
             <th>
-              <Link to="/united" className="link-hover label-text-alt link">
+              <Link to="/climbingwalls/united" className="link-hover label-text-alt link">
                 <button className="btn btn-primary">details</button>
               </Link>
             </th>
@@ -65,7 +65,7 @@ export function Home() {
           <p></p>
           <div className="card-actions justify-end">
             <th>
-              <Link to="/blok" className="link-hover label-text-alt link">
+              <Link to="/climbingwalls/blok" className="link-hover label-text-alt link">
                 <button className="btn btn-primary">details</button>
               </Link>
             </th>
@@ -81,7 +81,7 @@ export function Home() {
           <p></p>
           <div className="card-actions justify-end">
             <th>
-              <Link to="/spot" className="link-hover label-text-alt link">
+              <Link to="/climbingwalls/spot" className="link-hover label-text-alt link">
                 <button className="btn btn-primary">details</button>
               </Link>
             </th>
@@ -97,7 +97,7 @@ export function Home() {
           <p></p>
           <div className="card-actions justify-end">
             <th>
-              <Link to="/prw" className="link-hover label-text-alt link">
+              <Link to="/climbingwalls/prw" className="link-hover label-text-alt link">
                 <button className="btn btn-primary">details</button>
               </Link>
             </th>

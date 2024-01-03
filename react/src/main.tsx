@@ -127,13 +127,15 @@ const Root = () => (
           <Route path=":token" element={<ResetPassword />} />
           <Route path="" element={<Recovery />} />
         </Route>
+        <Route path="/climbingwalls">
+          <Route path="united" element={<United />} />
+          <Route path="spot" element={<Spot />} />
+          <Route path="prw" element={<PRW />} />
+          <Route path="blok" element={<BlokL />} />
+          <Route path="" element={<ClimbingWalls />} />
+        </Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/climbingwalls" element={<ClimbingWalls />} />
-        <Route path="/united" element={<United />} />
-        <Route path="/spot" element={<Spot />} />
-        <Route path="/prw" element={<PRW />} />
-        <Route path="/blok" element={<BlokL />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/about" element={<About />} />

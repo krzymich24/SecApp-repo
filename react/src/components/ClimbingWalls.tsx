@@ -66,7 +66,7 @@ export function ClimbingWalls() {
             <td style={{ textAlign: 'center' }}>Pułaskiego 30</td>
             <td style={{ textAlign: 'center' }}>6</td>
             <th>
-              <Link to="/spot" className="link-hover label-text-alt link">
+              <Link to="spot" className="link-hover label-text-alt link">
                 <button className="btn btn-primary">details</button>
               </Link>
             </th>
@@ -87,7 +87,7 @@ export function ClimbingWalls() {
             <td style={{ textAlign: 'center' }}>Unii Lubelskiej 3</td>
             <td style={{ textAlign: 'center' }}>8</td>
             <th>
-              <Link to="/united" className="link-hover label-text-alt link">
+              <Link to="united" className="link-hover label-text-alt link">
                 <button className="btn btn-primary">details</button>
               </Link>
             </th>
@@ -108,7 +108,7 @@ export function ClimbingWalls() {
             <td style={{ textAlign: 'center' }}>Wartostrada</td>
             <td style={{ textAlign: 'center' }}>10</td>
             <th>
-              <Link to="/prw" className="link-hover label-text-alt link">
+              <Link to="prw" className="link-hover label-text-alt link">
                 <button className="btn btn-primary">details</button>
               </Link>
             </th>
@@ -129,7 +129,7 @@ export function ClimbingWalls() {
             <td style={{ textAlign: 'center' }}>Bolesława Krzywoustego 72</td>
             <td style={{ textAlign: 'center' }}>14</td>
             <th>
-              <Link to="/blok" className="link-hover label-text-alt link">
+              <Link to="blok" className="link-hover label-text-alt link">
                 <button className="btn btn-primary">details</button>
               </Link>
             </th>
