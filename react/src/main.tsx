@@ -17,6 +17,7 @@ import { United } from './components/walls/United';
 import { BlokL } from './components/walls/Blok';
 import { PRW } from './components/walls/PRW';
 import { Spot } from './components/walls/Spot';
+import { ResetPassword } from './components/ResetPassword';
 
 const App = document.getElementById('root');
 
@@ -62,8 +63,6 @@ function Header() {
     </header>
   );
 }
-
-
 
 function Footer() {
   return (
@@ -124,7 +123,10 @@ const Root = () => (
     <Routes>
       <Route path="/" element={<Body />}>
         <Route path="/login" element={<LogIn />} />
-        <Route path="/recovery" element={<Recovery />} />
+        <Route path="/recovery">
+          <Route path=":token" element={<ResetPassword />} />
+          <Route path="" element={<Recovery />} />
+        </Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/home" element={<Home />} />
         <Route path="/climbingwalls" element={<ClimbingWalls />} />
