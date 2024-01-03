@@ -13,6 +13,10 @@ import { Contact } from './components/Contact';
 import { Motopedia } from './components/Motopedia';
 import { MyCars } from './components/MyCars';
 import { ClimbingWalls } from './components/ClimbingWalls';
+import { United } from './components/walls/United';
+import { BlokL } from './components/walls/Blok';
+import { PRW } from './components/walls/PRW';
+import { Spot } from './components/walls/Spot';
 
 const App = document.getElementById('root');
 
@@ -124,6 +128,10 @@ const Root = () => (
         <Route path="/signin" element={<SignIn />} />
         <Route path="/home" element={<Home />} />
         <Route path="/climbingwalls" element={<ClimbingWalls />} />
+        <Route path="/united" element={<United />} />
+        <Route path="/spot" element={<Spot />} />
+        <Route path="/prw" element={<PRW />} />
+        <Route path="/blok" element={<BlokL />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/about" element={<About />} />
