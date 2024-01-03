@@ -12,6 +12,7 @@ import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Motopedia } from './components/Motopedia';
 import { MyCars } from './components/MyCars';
+import { ClimbingWalls } from './components/ClimbingWalls';
 
 const App = document.getElementById('root');
 
@@ -122,6 +123,7 @@ const Root = () => (
         <Route path="/recovery" element={<Recovery />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/climbingwalls" element={<ClimbingWalls />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/about" element={<About />} />
