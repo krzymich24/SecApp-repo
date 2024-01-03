@@ -323,10 +323,11 @@ export function United() {
           {/* foot */}
           <tfoot>
           <tr>
+            <th style={{ textAlign: 'center', fontSize: '15px', fontWeight: 'bold' }}>ID</th>
             <th style={{ textAlign: 'center', fontSize: '15px', fontWeight: 'bold' }}>Nazwa</th>
-            <th style={{ textAlign: 'center', fontSize: '15px', fontWeight: 'bold' }}>Miasto</th>
-            <th style={{ textAlign: 'center', fontSize: '15px', fontWeight: 'bold' }}>Adres</th>
-            <th style={{ textAlign: 'center', fontSize: '15px', fontWeight: 'bold' }}>Ilość tras</th>
+            <th style={{ textAlign: 'center', fontSize: '15px', fontWeight: 'bold' }}>Autor</th>
+            <th style={{ textAlign: 'center', fontSize: '15px', fontWeight: 'bold' }}>Poziom trudności</th>
+            <th style={{ textAlign: 'center', fontSize: '15px', fontWeight: 'bold' }}>Rating</th>
             <th></th>
           </tr>
           </tfoot>
