@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 export function Home() {
+  const primaryColor = '#e49139';
   return (
     <>
       <div className="dropdown dropdown-hover">
@@ -59,6 +60,58 @@ export function Home() {
             </li>
           </ul>
       </div>
+      <h1 style={{ fontSize: '40px', fontWeight: 'bold' }}>Aktualności</h1>
+      <p style={{ fontSize: '12px' }}>03.01.2024</p>
+      <div className="divider divider-primary" style={{ backgroundColor: primaryColor }}></div>
+      <div className="card lg:card-side bg-base-100 shadow-xl">
+        <figure style={{ width: '500px', height: '500px' }}><img src="src/assets/img/United.jpg" alt="Album" width="400" height="400"/></figure>
+        <div className="card-body">
+          <h1 className="card-title" style={{ fontSize: '25px', fontWeight: 'bold' }}>United Climbing! <span className="indicator-item badge badge-secondary">modified</span> <span className="indicator-item badge badge-primary">new</span> </h1>
+
+          <h2 className="card-title" style={{ fontSize: '20px'}}>Zmieniono 2 trasy oraz dodano nową trasę</h2>
+          <p></p>
+          <div className="card-actions justify-end">
+            <button className="btn btn-primary">Details</button>
+          </div>
+        </div>
+      </div>
+      <div className="divider divider-primary" style={{ backgroundColor: primaryColor }}></div>
+      <div className="card lg:card-side bg-base-100 shadow-xl">
+        <figure style={{ width: '500px', height: '500px' }}><img src="src/assets/img/BL.jpg" alt="Album"/></figure>
+        <div className="card-body">
+          <h1 className="card-title" style={{ fontSize: '25px', fontWeight: 'bold' }}>Blok Line! <span className="indicator-item badge badge-primary">new</span></h1>
+          <h2 className="card-title" style={{ fontSize: '20px'}}>Dodano nową trasę</h2>
+          <p></p>
+          <div className="card-actions justify-end">
+            <button className="btn btn-primary">Details</button>
+          </div>
+        </div>
+      </div>
+      <div className="divider divider-primary" style={{ backgroundColor: primaryColor }}></div>
+      <div className="card lg:card-side bg-base-100 shadow-xl">
+        <figure style={{ width: '500px', height: '500px' }}><img src="src/assets/img/CS.jpg" alt="Album"/></figure>
+        <div className="card-body">
+          <h1 className="card-title" style={{ fontSize: '25px', fontWeight: 'bold' }}>Climbing Spot!<span className="indicator-item badge badge-secondary">modified</span></h1>
+          <h2 className="card-title" style={{ fontSize: '20px'}}>Zmieniono 2 trasy</h2>
+          <p></p>
+          <div className="card-actions justify-end">
+            <button className="btn btn-primary">Details</button>
+          </div>
+        </div>
+      </div>
+      <div className="divider divider-primary" style={{ backgroundColor: primaryColor }}></div>
+      <div className="card lg:card-side bg-base-100 shadow-xl">
+        <figure style={{ width: '500px', height: '500px' }}><img src="/src/assets/img/PRW.jpg" alt="Album"/></figure>
+        <div className="card-body">
+          <h1 className="card-title" style={{ fontSize: '25px', fontWeight: 'bold' }}>Poznański Rejon Wspinaczkowy! <span className="indicator-item badge badge-secondary">modified</span></h1>
+          <h2 className="card-title" style={{ fontSize: '20px'}}>Zmieniono 6 tras</h2>
+          <p></p>
+          <div className="card-actions justify-end">
+            <button className="btn btn-primary">Details</button>
+          </div>
+        </div>
+      </div>
+      <div className="divider divider-primary" style={{ backgroundColor: primaryColor }}></div>
     </>
   );
 }
