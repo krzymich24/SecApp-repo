@@ -48,7 +48,11 @@ export function Home() {
           <h2 className="card-title" style={{ fontSize: '20px'}}>Zmieniono 2 trasy oraz dodano nową trasę</h2>
           <p></p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Details</button>
+            <th>
+              <Link to="/united" className="link-hover label-text-alt link">
+                <button className="btn btn-primary">details</button>
+              </Link>
+            </th>
           </div>
         </div>
       </div>
@@ -60,7 +64,11 @@ export function Home() {
           <h2 className="card-title" style={{ fontSize: '20px'}}>Dodano nową trasę</h2>
           <p></p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Details</button>
+            <th>
+              <Link to="/blok" className="link-hover label-text-alt link">
+                <button className="btn btn-primary">details</button>
+              </Link>
+            </th>
           </div>
         </div>
       </div>
@@ -72,7 +80,11 @@ export function Home() {
           <h2 className="card-title" style={{ fontSize: '20px'}}>Zmieniono 2 trasy</h2>
           <p></p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Details</button>
+            <th>
+              <Link to="/spot" className="link-hover label-text-alt link">
+                <button className="btn btn-primary">details</button>
+              </Link>
+            </th>
           </div>
         </div>
       </div>
@@ -84,7 +96,11 @@ export function Home() {
           <h2 className="card-title" style={{ fontSize: '20px'}}>Zmieniono 6 tras</h2>
           <p></p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Details</button>
+            <th>
+              <Link to="/prw" className="link-hover label-text-alt link">
+                <button className="btn btn-primary">details</button>
+              </Link>
+            </th>
           </div>
         </div>
       </div>
