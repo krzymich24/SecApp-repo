@@ -26,7 +26,7 @@ function Header() {
     <header className="navbar bg-base-100">
       <div className="flex-1">
         <Link to="home">
-          <p className="btn-ghost btn text-xl normal-case">MasterGarageHub</p>
+          <p className="btn-ghost btn text-xl normal-case">Boulderline</p>
         </Link>
       </div>
 
