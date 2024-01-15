@@ -1,7 +1,21 @@
 import { Link } from "react-router-dom";
+import { GymCard, GymCardProps } from "./GymCard";
+import { useEffect, useState } from "react";
+import { API } from "../api";
 
 export function Home() {
-  const primaryColor = "#f99124ff";
+  const [gyms, setGyms] = useState<GymCardProps[]>([])
+
+  const fetchGyms = async () => {
+    const {data} = await API.get(`/gym/`);
+    // console.warn(data);
+    setGyms(data)
+  }
+
+  useEffect(()=> {
+    fetchGyms();
+  }, [])
+
   return (
     <div className="flex justify-center">
       <div className={"container"}>
@@ -11,59 +25,9 @@ export function Home() {
           <div className="divider"></div>
         </header>
         <main>
-          <div className="card card-side bg-base-100 shadow-xl mb-5">
-            <figure className={"w-1/4"}><img src="src/assets/img/United.jpg" width={"100px"} alt="United" />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">United Climbing</h2>
-              <p>
-                <span className="indicator-item badge badge-secondary mr-1">modified</span>
-                <span className="indicator-item badge badge-primary mr-1">new</span>
-              </p>
-              <p>Zmieniono 2 trasy oraz dodano nową trasę!</p>
-              <div className="card-actions justify-end">
-                <Link to="/climbingwalls/united" className="link-hover label-text-alt link">
-                  <button className="btn btn-primary">details</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="card card-side bg-base-100 shadow-xl mb-5">
-            <figure className={"w-1/4"}><img src="src/assets/img/BL.jpg" width={"100px"} alt="United" />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Blockline</h2>
-              <p>
-                <span className="indicator-item badge badge-secondary mr-1">modified</span>
-                <span className="indicator-item badge badge-primary mr-1">new</span>
-              </p>
-              <p>Dodano nową trasę!</p>
-              <div className="card-actions justify-end">
-                <Link to="/climbingwalls/blok" className="link-hover label-text-alt link">
-                  <button className="btn btn-primary">details</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="card card-side bg-base-100 shadow-xl mb-5">
-            <figure className={"w-1/4"}><img src="src/assets/img/CS.jpg" width={"100px"} alt="United" />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Climbing Spot</h2>
-              <p>
-                <span className="indicator-item badge badge-secondary mr-1">modified</span>
-                <span className="indicator-item badge badge-primary mr-1">new</span>
-              </p>
-              <p>Zmieniono 2 trasy oraz dodano nową trasę!</p>
-              <div className="card-actions justify-end">
-                <Link to="/climbingwalls/spot" className="link-hover label-text-alt link">
-                  <button className="btn btn-primary">details</button>
-                </Link>
-              </div>
-            </div>
-          </div>
+          {gyms.map(({ id,  image, location, name}) =>
+            <GymCard  id={id} image={image} location={location} name={name}/>
+          )}
         </main>
       </div>
     </div>

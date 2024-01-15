@@ -13,11 +13,9 @@ import { Contact } from './components/Contact';
 import { Motopedia } from './components/Motopedia';
 import { MyCars } from './components/MyCars';
 import { ClimbingWalls } from './components/ClimbingWalls';
-import { United } from './components/walls/United';
-import { BlokL } from './components/walls/Blok';
-import { PRW } from './components/walls/PRW';
-import { Spot } from './components/walls/Spot';
+import { Gym } from './components/walls/Gym';
 import { ResetPassword } from './components/ResetPassword';
+import { Boulder } from "./components/walls/Boulder";
 
 const App = document.getElementById('root');
 
@@ -170,26 +168,20 @@ const Root = () => (
   <HashRouter>
     <Routes>
       <Route path="/" element={<Body />}>
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/recovery">
+        <Route path="login" element={<LogIn />} />
+        <Route path="recovery">
           <Route path=":token" element={<ResetPassword />} />
           <Route path="" element={<Recovery />} />
         </Route>
-        <Route path="/climbingwalls">
-          <Route path="united" element={<United />} />
-          <Route path="spot" element={<Spot />} />
-          <Route path="prw" element={<PRW />} />
-          <Route path="blok" element={<BlokL />} />
+        <Route path="gym">
+          <Route path=":gymId" element={<Gym />} />
           <Route path="" element={<ClimbingWalls />} />
+        </Route>
+        <Route path="route">
+          <Route path=":gymId" element={<Boulder />} />
         </Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/chat" element={<Chat />} />
-        <Route path="/forum" element={<Forum />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/motopedia" element={<Motopedia />} />
-        <Route path="/mycars" element={<MyCars />} />
       </Route>
     </Routes>
   </HashRouter>

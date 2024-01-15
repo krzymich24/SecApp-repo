@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-export type RouteCardProps = { id: number | string; name: string, grade: string, author: string }
+export type RouteCardProps = { id: number | string; name: string, grade: string, author: string; image: string; isCollapsed?: boolean }
 
-export function RouteCard({ name, grade, author, id }: RouteCardProps) {
+export function BoulderCard({ name, grade, author, id, image, isCollapsed }: RouteCardProps) {
   return <>
     <div key={`route-${id}`} className="card card-side bg-base-100 shadow-xl mb-5">
       <figure className={"w-1/4"}>
-        <img src="src/assets/img/United.jpg" width={"100px"} alt="United" />
+        <img src={`src/assets/img/${image}`} width={"100px"} alt="United" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
@@ -16,7 +16,7 @@ export function RouteCard({ name, grade, author, id }: RouteCardProps) {
         <p>
           Graded for <strong>{grade}</strong>
         </p>
-        <div className="card-actions justify-end">
+        {!isCollapsed && <div className="card-actions justify-end">
           <button className="btn btn-outline">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24"
                  stroke="currentColor">
@@ -26,7 +26,7 @@ export function RouteCard({ name, grade, author, id }: RouteCardProps) {
             0
           </button>
 
-          <Link to="/climbingwalls/united" className="link-hover label-text-alt link">
+          <Link to={`/route/${id}`} className="link-hover label-text-alt link">
             <button className="btn btn-outline">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-6 w-6 mr-1" fill="currentColor">
                 <path
@@ -37,7 +37,7 @@ export function RouteCard({ name, grade, author, id }: RouteCardProps) {
               feedback
             </button>
           </Link>
-        </div>
+        </div>}
       </div>
     </div>
   </>;
