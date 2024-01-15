@@ -40,8 +40,8 @@ export class GymController {
     return this.routeSetterService.remove(dto);
   }
 
-  @Delete(':id/person')
-  listRouteSetters(@Body() dto: RouteSetterDto) {
-    return this.routeSetterService.listAllByGym(dto);
+  @Get(':id/person')
+  listRouteSetters(@Param('id') id: string) {
+    return this.routeSetterService.listAllByGym(id);
   }
 }
