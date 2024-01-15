@@ -16,6 +16,7 @@ import { ClimbingWalls } from './components/ClimbingWalls';
 import { Gym } from './components/walls/Gym';
 import { ResetPassword } from './components/ResetPassword';
 import { Boulder } from "./components/walls/Boulder";
+import { AdmView } from "./components/AdmView";
 
 const App = document.getElementById('root');
 
@@ -168,6 +169,7 @@ const Root = () => (
   <HashRouter>
     <Routes>
       <Route path="/" element={<Body />}>
+        <Route path="admin" element={<AdmView />} />
         <Route path="login" element={<LogIn />} />
         <Route path="recovery">
           <Route path=":token" element={<ResetPassword />} />
