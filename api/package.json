@@ -32,6 +32,7 @@
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
     "@types/jsonwebtoken": "^9.0.4",
     "jsonwebtoken": "^9.0.2",
