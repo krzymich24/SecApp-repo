@@ -28,7 +28,7 @@ export function SignIn() {
                   <span className="label-text">Username</span>
                 </label>
                 <input
-                  type="email"
+                  type="text"
                   placeholder="username"
                   className="input input-bordered"
                   required
