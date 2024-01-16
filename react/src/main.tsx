@@ -183,7 +183,7 @@ const Root = () => (
         <Route path="gym">
           <Route path=":gymId" element={<Gym />} />
           <Route path="" element={<ClimbingWalls />} />
-          <Route path="newRoute" element={<NewRoute />} />
+          <Route path=":gymId/newRoute" element={<NewRoute />} />
         </Route>
         <Route path="route">
           <Route path=":gymId" element={<Boulder />} />

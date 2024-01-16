@@ -1,7 +1,7 @@
 import { BoulderCard } from "./BoulderCard";
 import { GymCardProps } from "../GymCard";
-import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { API } from "../../api";
 
 const Route = (name, grade, author) => ({
@@ -46,6 +46,9 @@ export function Gym() {
           </header>
 
           <main>
+            <Link to="newRoute">
+              <button className="btn ">Add new route</button>
+            </Link>
             {routes.map(({ name, grade, author }, index) =>
               <BoulderCard key={index} id={index} name={name} grade={grade} author={author}
                            image={image} />
