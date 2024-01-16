@@ -46,9 +46,12 @@ export function Gym() {
           </header>
 
           <main>
-            <Link to="newRoute">
-              <button className="btn ">Add new route</button>
-            </Link>
+            <div style={{width: "100%", textAlign: "center"}}>
+              <Link to={`newRoute`} className="link-hover label-text-alt link">
+                <button className="btn">Add new route</button>
+              </Link>
+            </div>
+            <br/>
             {routes.map(({ name, grade, author }, index) =>
               <BoulderCard key={index} id={index} name={name} grade={grade} author={author}
                            image={image} />

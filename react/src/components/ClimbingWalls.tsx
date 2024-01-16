@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 import { API } from "../api";
 import { Maybe } from "typescript-functional-extensions";
 import { AxiosError } from "axios";
@@ -27,9 +27,13 @@ export function ClimbingWalls() {
 
   return (
     <>
-      <Link to={`newGym`} className="link-hover label-text-alt link">
-        <button className="btn">Add new gym</button>
-      </Link>
+      <br/>
+      <div style={{width: "100%", textAlign: "center"}}>
+        <Link to={`newGym`} className="link-hover label-text-alt link">
+          <button className="btn">Add new gym</button>
+        </Link>
+      </div>
+      <br/>
       <div className="overflow-x-auto">
         <table className="table" style={{ width: "100%" }}>
           {/* head */}
