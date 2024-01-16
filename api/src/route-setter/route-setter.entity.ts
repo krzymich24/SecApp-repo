@@ -1,6 +1,6 @@
-import { Column, Entity, ObjectId, PrimaryColumn, PrimaryGeneratedColumn, TableForeignKey } from "typeorm";
+import { Entity, PrimaryColumn } from 'typeorm';
 
-@Entity({ name: "route-setter" })
+@Entity({ name: 'route-setter' })
 export class RouteSetter {
   @PrimaryColumn({ nullable: false }) person!: string;
 

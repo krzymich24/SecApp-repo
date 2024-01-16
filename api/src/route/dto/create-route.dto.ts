@@ -1,1 +1,4 @@
-export class CreateRouteDto {}
+export class CreateRouteDto {
+  name!: string;
+  grade!: string;
+}

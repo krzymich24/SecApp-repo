@@ -1,14 +1,23 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { GymService } from './gym.service';
 import { CreateGymDto } from './dto/create-gym.dto';
-import { UpdateGymDto } from './dto/update-gym.dto';
-import { RouteSetterService } from "../route-setter/route-setter.service";
-import { RouteSetterDto } from "../route-setter/route-setter.dto";
+import { RouteSetterService } from '../route-setter/route-setter.service';
+import { RouteSetterDto } from '../route-setter/route-setter.dto';
 
 @Controller('gym')
 export class GymController {
-  constructor(private readonly gymService: GymService,
-              private readonly routeSetterService: RouteSetterService) {}
+  constructor(
+    private readonly gymService: GymService,
+    private readonly routeSetterService: RouteSetterService,
+  ) {}
 
   @Post()
   create(@Body() createGymDto: CreateGymDto) {
@@ -42,6 +51,7 @@ export class GymController {
 
   @Get(':id/person')
   listRouteSetters(@Param('id') id: string) {
+    console.warn(`gym/${id}/person`);
     return this.routeSetterService.listAllByGym(id);
   }
 }

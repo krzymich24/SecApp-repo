@@ -7,7 +7,8 @@ export const ROUTE_SETTER_REPO = 'ROUTE_SETTER_RELATIONSHIP';
 export const routeSetterProvider = [
   {
     provide: ROUTE_SETTER_REPO,
-    useFactory: (dataSource: DataSource) => dataSource.getRepository(RouteSetter),
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(RouteSetter),
     inject: [DATA_SOURCE],
   },
 ];
