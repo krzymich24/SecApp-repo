@@ -26,32 +26,47 @@ export function NewRoute() {
 
   return (
     <>
-      <form style={{ textAlign: "center" }}
-            onSubmit={async (e) => {
-              e.preventDefault();
-              await addRoute();
-            }}>
-        <p><b>Add new route</b></p>
-        <input type="text" placeholder="Name" className="input input-bordered input-primary w-full max-w-xs"
-               onChange={(event) => {
-                 setName(event.target.value);
-               }}
-               value={name}
-               required
-        />
+      <main>
         <br />
-        <input type="text" placeholder="Grade" className="input input-bordered input-primary w-full max-w-xs"
-               onChange={(event) => {
-                 setGrade(event.target.value);
-               }}
-               value={grade}
-               required
-        />
-
         <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <form style={{ textAlign: "center" }}
+              onSubmit={async (e) => {
+                e.preventDefault();
+                await addRoute();
+              }}>
+          <p><b>Add new route</b></p>
+          <input type="text" placeholder="Name" className="input input-bordered input-primary w-full max-w-xs"
+                 onChange={(event) => {
+                   setName(event.target.value);
+                 }}
+                 value={name}
+                 required
+          />
+          <br />
+          <input type="text" placeholder="Grade" className="input input-bordered input-primary w-full max-w-xs"
+                 onChange={(event) => {
+                   setGrade(event.target.value);
+                 }}
+                 value={grade}
+                 required
+          />
 
-        <button className="btn btn-primary">Add Route</button>
-      </form>
+          <br />
+
+          <button className="btn btn-primary">Add Route</button>
+        </form>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </main>
     </>
   );
 }

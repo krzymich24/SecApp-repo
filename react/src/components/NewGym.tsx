@@ -27,37 +27,50 @@ export function NewGym() {
 
   return (
     <>
-      <form style={{ textAlign: "center" }}
-            onSubmit={async (e) => {
-              e.preventDefault();
-              await addGym();
-            }}>
-        <p><b>Add new gym</b></p>
-        <input type="text" placeholder="Name" className="input input-bordered input-primary w-full max-w-xs"
-               onChange={(event) => {
-                 setName(event.target.value);
-               }}
-               value={name}
-               required
-        />
+      <main>
         <br />
-        <input type="text" placeholder="City" className="input input-bordered input-primary w-full max-w-xs"
-               onChange={(event) => {
-                 setCity(event.target.value);
-               }}
-               value={city}
-               required
-        />
+        <br />
+        <br />
+        <br />
+        <br/>
+        <form style={{ textAlign: "center" }}
+              onSubmit={async (e) => {
+                e.preventDefault();
+                await addGym();
+              }}>
+          <p><b>Add new gym</b></p>
+          <input type="text" placeholder="Name" className="input input-bordered input-primary w-full max-w-xs"
+                 onChange={(event) => {
+                   setName(event.target.value);
+                 }}
+                 value={name}
+                 required
+          />
+          <br />
+          <input type="text" placeholder="City" className="input input-bordered input-primary w-full max-w-xs"
+                 onChange={(event) => {
+                   setCity(event.target.value);
+                 }}
+                 value={city}
+                 required
+          />
 
+          <br />
+          <input type="text" placeholder="Address" className="input input-bordered input-primary w-full max-w-xs"
+                 onChange={(event) => {
+                   setAddress(event.target.value);
+                 }}
+                 value={address} />
+          <br />
+          <br />
+          <button className="btn btn-primary">Add Gym</button>
+        </form>
         <br />
-        <input type="text" placeholder="Address" className="input input-bordered input-primary w-full max-w-xs"
-               onChange={(event) => {
-                 setAddress(event.target.value);
-               }}
-               value={address} />
         <br />
-        <button className="btn btn-primary">Add Gym</button>
-      </form>
+        <br />
+        <br />
+        <br />
+      </main>
     </>
   );
 }
