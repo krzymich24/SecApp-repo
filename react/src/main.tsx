@@ -14,6 +14,7 @@ import { ResetPassword } from './components/ResetPassword';
 import { Boulder } from "./components/walls/Boulder";
 import { AdmView } from "./components/AdmView";
 import { NewRoute } from "./components/NewRoute";
+import { NewGym } from "./components/NewGym";
 
 const App = document.getElementById('root');
 
@@ -183,6 +184,7 @@ const Root = () => (
         <Route path="gym">
           <Route path=":gymId" element={<Gym />} />
           <Route path="" element={<ClimbingWalls />} />
+          <Route path="newGym" element={<NewGym />} />
           <Route path=":gymId/newRoute" element={<NewRoute />} />
         </Route>
         <Route path="route">

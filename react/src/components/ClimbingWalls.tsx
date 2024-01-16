@@ -27,37 +27,9 @@ export function ClimbingWalls() {
 
   return (
     <>
-      <form style={{ textAlign: "center" }}
-            onSubmit={async (e) => {
-              e.preventDefault();
-              await addGym();
-            }}>
-        <p><b>Add new gym</b></p>
-        <input type="text" placeholder="Name" className="input input-bordered input-primary w-full max-w-xs"
-               onChange={(event) => {
-                 setName(event.target.value);
-               }}
-               value={name}
-               required
-        />
-        <br />
-        <input type="text" placeholder="City" className="input input-bordered input-primary w-full max-w-xs"
-               onChange={(event) => {
-                 setCity(event.target.value);
-               }}
-               value={city}
-               required
-        />
-
-        <br />
-        <input type="text" placeholder="Address" className="input input-bordered input-primary w-full max-w-xs"
-               onChange={(event) => {
-                 setAddress(event.target.value);
-               }}
-               value={address} />
-        <br />
-        <button className="btn btn-primary">Add Gym</button>
-      </form>
+      <Link to={`newGym`} className="link-hover label-text-alt link">
+        <button className="btn">Add new gym</button>
+      </Link>
       <div className="overflow-x-auto">
         <table className="table" style={{ width: "100%" }}>
           {/* head */}
