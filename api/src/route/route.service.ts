@@ -1,8 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateRouteDto } from './dto/create-route.dto';
 import { Repository } from 'typeorm';
-import { PERSON_REPO } from '../person/person.provider';
-import { Person } from '../person/person.entity';
 import { Route } from './entities/route.entity';
 import { ROUTE_REPO } from './route.provider';
 
@@ -22,7 +20,7 @@ export class RouteService {
   }
 
   findAllForGym(gym: string) {
-    return this.repo.findBy({ gym });
+    return this.repo.findBy({ author: { gym: { id: gym } } });
   }
 
   findOne(id: number) {

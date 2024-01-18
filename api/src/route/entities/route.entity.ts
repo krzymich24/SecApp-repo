@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { RouteSetter } from '../../route-setter/route-setter.entity';
 
 @Entity({ name: 'route' })
 export class Route {
@@ -6,9 +13,9 @@ export class Route {
 
   @Column({ nullable: false }) name: string;
 
-  @Column({ nullable: false }) author: string;
-
   @Column({ nullable: false }) grade: string;
 
-  @Column({ nullable: false }) gym: string;
+  @ManyToOne((type) => RouteSetter)
+  @JoinColumn({ name: 'author' })
+  author: RouteSetter;
 }

@@ -16,10 +16,13 @@ export class RouteSetterService {
   }
 
   listAllByGym(gymId: string) {
-    return this.gymRepository.findBy({ gym: gymId });
+    return this.gymRepository.findBy({ gym: { id: gymId } });
   }
 
   remove({ gym, person }: RouteSetterDto) {
-    return this.gymRepository.delete({ gym, person });
+    return this.gymRepository.delete({
+      gym: { id: gym },
+      person: { id: person },
+    });
   }
 }

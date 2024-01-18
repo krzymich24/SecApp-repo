@@ -1,4 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'people' })
 export class Person {
@@ -14,6 +19,6 @@ export class Person {
 
   @Column({ unique: true }) email!: string;
 
-  @Column({ name: 'created_at', default: new Date(Date.now()) })
+  @CreateDateColumn({ name: 'created_at' })
   createdAt?: Date;
 }
