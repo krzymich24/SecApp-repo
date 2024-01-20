@@ -4,6 +4,7 @@ import { HashRouter, Link, Outlet, Route, Routes } from 'react-router-dom';
 import React from 'react';
 import * as _ from 'lodash';
 import { LogIn } from './components/LogIn';
+import { LogOut } from './components/LogOut';
 import { Home } from './components/Home';
 import { Recovery } from './components/Recovery';
 import { SignIn } from './components/SignIn';
@@ -108,9 +109,11 @@ function Header() {
             <button className="btn ">Log In</button>
           </Link>
         ) : (
-          <button className="btn" onClick={() => unauthorize()}>
-            Log Out
-          </button>
+          <Link to="/logout">
+            <button className="btn" onClick={() => unauthorize()}>
+              Log Out
+            </button>
+          </Link>
         )}
       </div>
     </header>
@@ -195,6 +198,7 @@ const Root = () => (
             <Route path=":gymId" element={<Boulder />} />
           </Route>
           <Route path="/home" element={<Home />} />
+          <Route path="/logout" element={<LogOut />} />
         </Route>
       </Routes>
     </HashRouter>
