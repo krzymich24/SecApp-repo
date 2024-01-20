@@ -36,9 +36,9 @@ export class GymController {
     return this.routeSetterService.create(gymId, personId);
   }
 
-  @Delete('person')
-  unAssign(@Body() dto: RouteSetterDto) {
-    return this.routeSetterService.remove(dto.gym, dto.person.id + '');
+  @Delete(':gymId/assign/:personId')
+  unAssign(@Param('gymId') gymId: string, @Param('personId') personId: string) {
+    return this.routeSetterService.remove(gymId, personId);
   }
 
   @Get(':id/person')
