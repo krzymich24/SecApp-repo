@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react';
 import { GymCard, GymCardProps } from './GymCard';
 import { API } from '../api';
 
-class RouteSetterDto {
-  person!: string;
-
-  gym!: string;
+export class RouteSetterDto {
+  person!: { id: number; username: string; [key: string]: any };
+  gym?: string;
 }
 
 export function AdmView() {
@@ -71,9 +70,9 @@ export function AdmView() {
             <div>
               <p>List of the route-setters</p>
               {routeSetters.map(({ gym, person }, index) => (
-                <div key={`setter-${gym}-${person}-${index}`} className="card mb-5 bg-base-100 shadow-xl">
+                <div key={`setter-${gym}-${person.id}-${index}`} className="card mb-5 bg-base-100 shadow-xl">
                   <div className="card-body">
-                    <h2 className="card-title">{person}</h2>
+                    <h2 className="card-title">{person.username}</h2>
                     <div className="card-actions justify-end">
                       <button type="button" className="btn-error btn" onClick={() => {}}>
                         delete
@@ -85,10 +84,28 @@ export function AdmView() {
             </div>
 
             <div>
-              <p>List of rest users</p>
-              {gyms.map(({ id, image, location, name }) => (
-                <GymCard id={id} image={image} location={location} name={name} />
-              ))}
+              <form>
+                <p>Add user to gym</p>
+                {selectedGym &&
+                  <div className="card mb-5 bg-base-100 shadow-xl">
+                    <h2 className="card-title">{selectedGym}</h2>
+                    <br/>
+                    <label className="label">
+                      <span className="label-text">User ID</span>
+                    </label>
+                    <input
+                      type="number"
+                      className="input-bordered input"
+                      required
+                    />
+                    <div>
+                      <button className="btn-primary btn">
+                        Add
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </form>
             </div>
           </div>
         </main>
