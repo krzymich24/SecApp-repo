@@ -95,6 +95,7 @@ export function AdmView() {
 
             <div>
               <form>
+                <p>test</p>
                 <p>Add user to gym</p>
                 {selectedGym &&
                   <div className="card mb-5 bg-base-100 shadow-xl">
