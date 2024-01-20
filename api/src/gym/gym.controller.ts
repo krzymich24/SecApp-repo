@@ -68,8 +68,14 @@ export class GymController {
     return this.routeSetterService.remove(gymId, personId);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id/person')
-  listRouteSetters(@Param('id') id: string) {
+  listRouteSetters(
+    @Param('id') id: string,
+    @Credentials() credentials: Person,
+  ) {
+    if (!credentials?.isAdmin)
+      throw new UnauthorizedException('Not allowed to access this route');
     console.warn(`gym/${id}/person`);
     return this.routeSetterService.listAllByGym(id);
   }
