@@ -12,7 +12,7 @@ import { GymService } from './gym.service';
 import { CreateGymDto } from './dto/create-gym.dto';
 import { RouteSetterService } from '../route-setter/route-setter.service';
 import { RouteSetterDto } from '../route-setter/route-setter.dto';
-import { JwtAuthGuard } from '../auth/auth.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Credentials } from '../auth/credentials.decorator';
 import { Person } from '../person/person.entity';
 

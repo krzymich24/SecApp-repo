@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { GymCard, GymCardProps } from './GymCard';
 import { API } from '../api';
+import { useAuth } from "../useAuth.hooks";
+import autoprefixer from "autoprefixer";
 
 export class RouteSetterDto {
   person!: { id: number; username: string; [key: string]: any };
@@ -13,6 +15,8 @@ export function AdmView() {
   const [selectedGym, setSelectedGym] = useState<string | number>();
   const [routeSetters, setRouteSetters] = useState<RouteSetterDto[]>([]);
   const [selectedSetterID, setSelectedSetterID] = useState<number>();
+  const {getToken} = useAuth();
+
   const fetchGyms = async () => {
     const { data } = await API.get('/gym/');
     // console.warn(data);
@@ -35,12 +39,21 @@ export function AdmView() {
   }, [selectedGym]);
 
   const addSetter = async ()=>{
-    await API.post(`/gym/${selectedGym}/assign/${selectedSetterID}`);
+    await API.post(`/gym/${selectedGym}/assign/${selectedSetterID}`, [],{
+      headers:{
+        authorization: `Bearer ${getToken()}`
+      }
+    });
     await fetchSetters();
   };
 
   const removeSetter = async (personID:number)=>{
-    await API.delete(`/gym/${selectedGym}/assign/${personID}`);
+    console.warn(getToken());
+    await API.delete(`/gym/${selectedGym}/assign/${personID}`, {
+      headers:{
+        "Authorization": `Bearer ${getToken()}`
+      }
+    });
     await fetchSetters();
   };
 

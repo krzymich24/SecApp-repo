@@ -19,6 +19,10 @@ export const useAuth = () => {
     // }
   };
 
+  const getToken = () =>{
+    return sessionStorage.getItem(TOKEN_MAGIC_STRING);
+  }
+
   const saveAuth = (userToken: string) => {
     const user: UserProfile | null | undefined = decodeToken(userToken);
     if (!user) return;
@@ -34,5 +38,5 @@ export const useAuth = () => {
     sessionStorage.removeItem(TOKEN_MAGIC_STRING);
   };
 
-  return { auth, saveAuth, unauthorize, authorizeFromSession };
+  return { auth, saveAuth, unauthorize, authorizeFromSession, getToken };
 };
