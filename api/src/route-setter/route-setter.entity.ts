@@ -1,6 +1,7 @@
 import {
   Entity,
   JoinColumn,
+  JoinTable,
   ManyToOne,
   PrimaryColumn,
   PrimaryGeneratedColumn,
@@ -13,7 +14,7 @@ export class RouteSetter {
   @PrimaryGeneratedColumn()
   id: string;
 
-  @ManyToOne((type) => Person)
+  @ManyToOne((type) => Person, { eager: true })
   @JoinColumn({ name: 'person' })
   person: Person;
 
