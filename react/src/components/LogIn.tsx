@@ -1,14 +1,33 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { FormEvent, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AxiosError } from 'axios';
 import { Maybe } from 'typescript-functional-extensions';
 import { API } from '../api';
+
+import { AuthService } from "../../../services/auth";
+import { useAuth } from "../../../useAuth";
 
 export function LogIn() {
   const [username, setUsername] = useState<string>();
   const [password, setPassword] = useState<string>();
   const [error, setError] = useState<string>('');
+
+  const { auth, authorize } = useAuth();
   const navigate = useNavigate();
+
+  const { state } = useLocation();
+
+  const handleLogin = (e: FormEvent) => {
+    e.preventDefault();
+
+    AuthService.login(username, password)
+      .then((data) => {
+        authorize({ id: data.uid, capabilities: data.capabilities });
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
 
   // eslint-disable-next-line consistent-return
   const login = async () => {
