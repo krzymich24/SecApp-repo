@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { GymService } from './gym.service';
 import { CreateGymDto } from './dto/create-gym.dto';
 import { RouteSetterService } from '../route-setter/route-setter.service';
@@ -39,14 +31,14 @@ export class GymController {
     return this.gymService.remove(+id);
   }
 
-  @Post('person')
-  assign(@Body() dto: RouteSetterDto) {
-    return this.routeSetterService.create(dto);
+  @Post(':gymId/assign/:personId')
+  assign(@Param('gymId') gymId: string, @Param('personId') personId: string) {
+    return this.routeSetterService.create(gymId, personId);
   }
 
   @Delete('person')
   unAssign(@Body() dto: RouteSetterDto) {
-    return this.routeSetterService.remove(dto);
+    return this.routeSetterService.remove(dto.gym, dto.person.id + '');
   }
 
   @Get(':id/person')
