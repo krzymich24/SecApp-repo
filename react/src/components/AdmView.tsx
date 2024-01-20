@@ -23,6 +23,7 @@ export function AdmView() {
   const fetchSetters = async () => {
     if (!selectedGym) return;
     const { data } = await API.get(`/gym/${selectedGym}/person`);
+    console.log(data)
     setRouteSetters(data);
   }
 
