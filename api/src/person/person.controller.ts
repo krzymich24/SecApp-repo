@@ -8,12 +8,16 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
+  Request,
 } from '@nestjs/common';
 import { Person } from './person.entity';
 import { PersonService } from './person.service';
 import { sign, verify } from 'jsonwebtoken';
 import { LYRICS } from '../constants';
 import { Maybe } from 'typescript-functional-extensions';
+import { LocalAuthGuard } from '../auth/local-auth.guard';
+import { Request as Req } from 'express';
 
 @Controller('person')
 export class PersonController {
@@ -26,16 +30,16 @@ export class PersonController {
     return this.service.findAll();
   }
 
-  @Post()
-  async init(): Promise<Person> {
-    const person = new Person();
-    person.username = 'admin';
-    person.password = 'admin';
-    person.email = 'admin@adm.in';
-    person.isAdmin = true;
-    person.isActive = true;
-    return this.service.addOne(person);
-  }
+  // @Post()
+  // async init(): Promise<Person> {
+  //   const person = new Person();
+  //   person.username = 'admin';
+  //   person.password = 'admin';
+  //   person.email = 'admin@adm.in';
+  //   person.isAdmin = true;
+  //   person.isActive = true;
+  //   return this.service.addOne(person);
+  // }
 
   @Post('/register')
   async register(
@@ -103,25 +107,23 @@ export class PersonController {
     return;
   }
 
+  @UseGuards(LocalAuthGuard)
   @Put('login')
-  async login(
-    @Query('username') username: string,
-    @Query('password') password: string,
-  ) {
-    this.logger.debug(`Username: ${username}, Password: ${password}`);
-    const matching = await this.service.findOneByUsername(username);
-
-    if (!matching || password !== matching.password) {
-      this.logger.error(
-        `[${HttpStatus.NOT_FOUND}] Login failed for '${username}': bad password or '${username}' doesn't exits.`,
-      );
-      throw new NotFoundException(
-        `Login failed for '${username}': bad password or '${username}' doesn't exits.`,
-      );
-    }
-    this.logger.debug(
-      `Matching: ${matching.username}, Password: ${matching.password}`,
-    );
-    return sign({ username, password }, LYRICS);
+  async login(@Request() req: Req) {
+    this.logger.debug(`User: ${req.user}`);
+    // const matching = await this.service.findOneByUsername(username);
+    //
+    // if (!matching || password !== matching.password) {
+    //   this.logger.error(
+    //     `[${HttpStatus.NOT_FOUND}] Login failed for '${username}': bad password or '${username}' doesn't exits.`,
+    //   );
+    //   throw new NotFoundException(
+    //     `Login failed for '${username}': bad password or '${username}' doesn't exits.`,
+    //   );
+    // }
+    // this.logger.debug(
+    //   `Matching: ${matching.username}, Password: ${matching.password}`,
+    // );
+    return sign(req.user, LYRICS);
   }
 }

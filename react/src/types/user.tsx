@@ -1,11 +1,9 @@
-export enum UserCapabilities {
-  CAP_AUTHOR = 1,
-  CAP_ORGANIZER = 2,
-  CAP_PARTICIPANT = 3,
-}
-
 export interface UserProfile {
   id: number;
-  username?: string;
-  capabilities: UserCapabilities[];
+  isAdmin: boolean;
+  isActive: boolean;
+  username: string;
+  email: string;
+  createdAt: string;
+  iat: number;
 }
