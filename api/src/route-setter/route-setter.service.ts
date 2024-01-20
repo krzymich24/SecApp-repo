@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { RouteSetterDto } from './route-setter.dto';
 import { Repository } from 'typeorm';
 import { RouteSetter } from './route-setter.entity';
 import { ROUTE_SETTER_REPO } from './route-setter.provider';
+import { ResultAsync } from 'typescript-functional-extensions';
 
 @Injectable()
 export class RouteSetterService {
@@ -11,18 +11,46 @@ export class RouteSetterService {
     private gymRepository: Repository<RouteSetter>,
   ) {}
 
-  create(dto: RouteSetterDto) {
-    return this.gymRepository.insert({});
+  create(gymId: string, userId: string) {
+    return this.gymRepository.insert({
+      gym: () => gymId,
+      person: () => userId,
+    });
   }
 
-  listAllByGym(gymId: string) {
-    return this.gymRepository.findBy({ gym: { id: gymId } });
+  async verify(gym: string, person: string) {
+    return await ResultAsync.try(
+      () =>
+        this.gymRepository.countBy({
+          gym: { id: gym },
+          person: { id: person },
+        }),
+      (error) => `No route-setter ${person} found for gym ${gym}: ${error}`,
+    )
+      .ensure(
+        (result) => result === 1,
+        (result) =>
+          `There were ${result} results for person ${person} and gym ${gym}`,
+      )
+      .match({
+        success: () => true,
+        failure: (e) => {
+          console.error(e); // fixme: nest logger
+          return false;
+        },
+      });
   }
 
-  remove({ gym, person }: RouteSetterDto) {
+  async listAllByGym(gymId: string) {
+    const ppl = await this.gymRepository.findBy({ gym: { id: gymId } });
+    console.log(ppl);
+    return ppl;
+  }
+
+  remove(gymId: string, userId: string) {
     return this.gymRepository.delete({
-      gym: { id: gym },
-      person: { id: person },
+      gym: { id: gymId },
+      person: { id: userId },
     });
   }
 }
