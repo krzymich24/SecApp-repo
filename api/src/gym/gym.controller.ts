@@ -11,7 +11,6 @@ import {
 import { GymService } from './gym.service';
 import { CreateGymDto } from './dto/create-gym.dto';
 import { RouteSetterService } from '../route-setter/route-setter.service';
-import { RouteSetterDto } from '../route-setter/route-setter.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Credentials } from '../auth/credentials.decorator';
 import { Person } from '../person/person.entity';
@@ -52,9 +51,11 @@ export class GymController {
   ) {
     if (!credentials?.isAdmin)
       throw new UnauthorizedException('Not allowed to access this route');
+
     return this.routeSetterService.create(gymId, personId);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':gymId/assign/:personId')
   unAssign(
     @Param('gymId') gymId: string,
