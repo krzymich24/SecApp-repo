@@ -8,7 +8,8 @@ export class AuthService {
   private readonly logger = new Logger(AuthService.name);
 
   constructor(
-    private readonly usersService: PersonService, // private readonly jwtService: JwtService,
+    private readonly usersService: PersonService,
+    private readonly jwtService: JwtService,
   ) {}
 
   async validateSimpleAuth(username: string, pass: string): Promise<any> {
@@ -18,6 +19,11 @@ export class AuthService {
     const { password, ...result } = user;
     this.logger.debug(`Simple auth ok, result is ${JSON.stringify(result)}`);
     return result;
+  }
+
+  async login(user: any) {
+    const payload = { username: user.username, sub: user.userId };
+    return this.jwtService.sign(payload);
   }
 
   // async register(email: string, password: string, name: string) {

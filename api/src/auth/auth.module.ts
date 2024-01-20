@@ -11,20 +11,17 @@ import { LocalStrategy } from './local.strategy';
 import { PersonService } from '../person/person.service';
 import { personProvider } from '../person/person.provider';
 import { DatabaseModule } from '../database.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
     // ConfigModule.forRoot(), // Move this line up
     // MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
     // PassportModule.register({ defaultStrategy: 'jwt' }),
-    // JwtModule.registerAsync({
-    //   // imports: [ConfigModule],
-    //   useFactory: async () => ({
-    //     secret: LYRICS,
-    //     signOptions: { expiresIn: '1h' },
-    //   }),
-    //   // inject: [ConfigService],
-    // }),
+    JwtModule.register({
+      secret: LYRICS,
+      signOptions: { expiresIn: '1h' },
+    }),
     PersonModule,
     PassportModule,
     DatabaseModule,

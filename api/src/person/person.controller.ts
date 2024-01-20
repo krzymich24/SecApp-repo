@@ -18,17 +18,13 @@ import { LYRICS } from '../constants';
 import { Maybe } from 'typescript-functional-extensions';
 import { LocalAuthGuard } from '../auth/local-auth.guard';
 import { Request as Req } from 'express';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('person')
 export class PersonController {
   private readonly logger = new Logger(PersonController.name);
 
   constructor(private readonly service: PersonService) {}
-
-  @Get()
-  async getAll(): Promise<Person[]> {
-    return this.service.findAll();
-  }
 
   // @Post()
   // async init(): Promise<Person> {
@@ -111,19 +107,6 @@ export class PersonController {
   @Put('login')
   async login(@Request() req: Req) {
     this.logger.debug(`User: ${req.user}`);
-    // const matching = await this.service.findOneByUsername(username);
-    //
-    // if (!matching || password !== matching.password) {
-    //   this.logger.error(
-    //     `[${HttpStatus.NOT_FOUND}] Login failed for '${username}': bad password or '${username}' doesn't exits.`,
-    //   );
-    //   throw new NotFoundException(
-    //     `Login failed for '${username}': bad password or '${username}' doesn't exits.`,
-    //   );
-    // }
-    // this.logger.debug(
-    //   `Matching: ${matching.username}, Password: ${matching.password}`,
-    // );
     return sign(req.user, LYRICS);
   }
 }
