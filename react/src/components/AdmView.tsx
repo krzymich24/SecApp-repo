@@ -12,7 +12,7 @@ export function AdmView() {
   const [gyms, setGyms] = useState<GymCardProps[]>([]);
   const [selectedGym, setSelectedGym] = useState<string | number>();
   const [routeSetters, setRouteSetters] = useState<RouteSetterDto[]>([]);
-
+  const [selectedSetterID, setSelectedSetterID] = useState<number>();
   const fetchGyms = async () => {
     const { data } = await API.get('/gym/');
     // console.warn(data);
@@ -33,6 +33,16 @@ export function AdmView() {
   useEffect(() => {
     fetchSetters()
   }, [selectedGym]);
+
+  const addSetter = async ()=>{
+    await API.post(`/gym/${selectedGym}/assign/${selectedSetterID}`);
+    await fetchSetters();
+  };
+
+  const removeSetter = async (personID:number)=>{
+    await API.delete(`/gym/${selectedGym}/assign/${personID}`);
+    await fetchSetters();
+  };
 
   return (
     <div className="flex justify-center">
@@ -74,7 +84,7 @@ export function AdmView() {
                   <div className="card-body">
                     <h2 className="card-title">{person.username}</h2>
                     <div className="card-actions justify-end">
-                      <button type="button" className="btn-error btn" onClick={() => {}}>
+                      <button type="button" className="btn-error btn" onClick={()=>removeSetter(person.id)}>
                         delete
                       </button>
                     </div>
@@ -97,14 +107,17 @@ export function AdmView() {
                       type="number"
                       className="input-bordered input"
                       required
+                      onChange={(event) => {
+                        setSelectedSetterID(+event.target.value);
+                      }}
                     />
                     <div>
-                      <button className="btn-primary btn">
+                      <button className="btn-primary btn" onClick={()=>addSetter()}>
                         Add
                       </button>
                     </div>
                   </div>
-                )}
+                }
               </form>
             </div>
           </div>
