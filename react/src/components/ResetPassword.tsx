@@ -9,7 +9,7 @@ export function ResetPassword() {
   const setNewPassword = async () => {
     try {
       console.log('Password:', password);
-       const { data } = await API.put(`/person/reset?password=${password}`, { password });
+       const { data } = await API.put(`/person/reset?password=${password}&otp=${token}`, { password });
        console.log(data);
     } catch (e) {
       console.error((e as Error).message);

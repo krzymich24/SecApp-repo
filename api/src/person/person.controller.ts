@@ -89,7 +89,7 @@ export class PersonController {
 
     if (userId.hasNoValue) throw new NotFoundException();
 
-    await this.service.resetPassword(userId.getValueOrThrow(), password);
+    await this.service.resetPassword(userId.getValueOrThrow(), hashSync(password,8));
 
     return;
   }
