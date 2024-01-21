@@ -1,5 +1,18 @@
 // auth.dto.ts
 import { ApiProperty } from '@nestjs/swagger';
+import { isNumber } from '@nestjs/common/utils/shared.utils';
+import { Expose } from 'class-transformer';
+
+export class UserDto {
+  @Expose()
+  id: number;
+
+  @Expose()
+  isAdmin: boolean;
+
+  @Expose()
+  username: string;
+}
 
 export class RegisterDto {
   @ApiProperty({ example: 'user@example.com', description: 'User email' })

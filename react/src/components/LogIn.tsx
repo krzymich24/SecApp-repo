@@ -13,8 +13,6 @@ export function LogIn() {
   const { auth, saveAuth } = useAuth();
   const navigate = useNavigate();
 
-  const { state } = useLocation();
-
   // eslint-disable-next-line consistent-return
   const login = async () => {
     try {
@@ -26,7 +24,7 @@ export function LogIn() {
       // console.log(data);
       const token = await AuthService.login(username, password);
       saveAuth(token);
-      return navigate('/home');
+      return navigate('/gym');
     } catch (e) {
       const message: string = Maybe.from((e as AxiosError)?.response?.data)
         .map((data) => (data as { statusCode: number; message: string; error: string }).message)
@@ -37,14 +35,23 @@ export function LogIn() {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+    <div
+      className="hero min-h-screen bg-base-200"
+      style={{
+        backgroundImage:
+          'url(https://assets.gqindia.com/photos/611e3b614a83577ac4e82354/16:9/w_2560%2Cc_limit/indoor%252520rock%252520climbing.jpg)',
+      }}
+    >
+      <div className="hero-overlay bg-opacity-75" />
+
+      <div className="hero-content flex-col ">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
           <p className="py-6">Log in and get access to full content of this application.</p>
         </div>
+        {/* <div> */}
         {error && (
-          <div className="alert alert-error max-w-sm">
+          <div className="alert alert-error mb-3 max-w-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 shrink-0 stroke-current"
@@ -96,8 +103,8 @@ export function LogIn() {
                   I forgor my password?
                 </Link>
                 ·
-                <Link to="/signin" className="link-hover label-text-alt link">
-                  I ain't got no account?
+                <Link to="../register" className="link-hover label-text-alt link">
+                  I ain&rsquo;t got no account?
                 </Link>
               </label>
             </div>
@@ -109,6 +116,7 @@ export function LogIn() {
           </form>
         </div>
       </div>
+      {/* </div> */}
     </div>
   );
 }

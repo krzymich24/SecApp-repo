@@ -1,14 +1,31 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  UnauthorizedException,
+  UseGuards,
+} from '@nestjs/common';
 import { RouteService } from './route.service';
 import { CreateRouteDto } from './dto/create-route.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { Credentials } from '../auth/credentials.decorator';
+import { Person } from '../person/person.entity';
 
 @Controller('route')
 export class RouteController {
   constructor(private readonly routeService: RouteService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() createRouteDto: CreateRouteDto) {
-    return this.routeService.create(createRouteDto);
+  create(
+    @Body() createRouteDto: CreateRouteDto,
+    @Credentials() cred: Person | undefined,
+  ) {
+    if (!cred?.id) throw new UnauthorizedException();
+    return this.routeService.create(createRouteDto, cred.id + '');
   }
 
   @Get()

@@ -18,27 +18,19 @@ export class RouteSetterService {
     });
   }
 
-  async verify(gym: string, person: string) {
-    return await ResultAsync.try(
+  verify(gym: string, person: string) {
+    return ResultAsync.try(
       () =>
         this.gymRepository.countBy({
           gym: { id: gym },
           person: { id: person },
         }),
       (error) => `No route-setter ${person} found for gym ${gym}: ${error}`,
-    )
-      .ensure(
-        (result) => result === 1,
-        (result) =>
-          `There were ${result} results for person ${person} and gym ${gym}`,
-      )
-      .match({
-        success: () => true,
-        failure: (e) => {
-          console.error(e); // fixme: nest logger
-          return false;
-        },
-      });
+    ).ensure(
+      (result) => result === 1,
+      (result) =>
+        `There were ${result} results for person ${person} and gym ${gym}`,
+    );
   }
 
   async listAllByGym(gymId: string) {
@@ -51,6 +43,13 @@ export class RouteSetterService {
     return this.gymRepository.delete({
       gym: { id: gymId },
       person: { id: userId },
+    });
+  }
+
+  find(gym: string, person: string) {
+    return this.gymRepository.findOneBy({
+      gym: { id: gym },
+      person: { id: person },
     });
   }
 }

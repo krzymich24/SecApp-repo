@@ -1,28 +1,39 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { BoulderCard } from './BoulderCard';
-import { GymCardProps } from '../GymCard';
-import { API } from '../../api';
-
-type Boulder = {
-  id: string;
-  name: string;
-  author: string;
-  grade: string;
-};
+import { GymCardProps } from './GymCard';
+import { API } from '../api';
+import { useAuth } from '../useAuth.hooks';
+import { Boulder } from '../types/boulder';
 
 export function Gym() {
   const { gymId } = useParams();
+  const { getToken } = useAuth();
   const [gym, setGym] = useState<GymCardProps>();
   const [boulders, setBoulders] = useState<Boulder[]>([]);
+  const [isAllowedToRouteSet, setIsAllowedToRouteSet] = useState<boolean>(false);
+
   const navigate = useNavigate();
 
   const fetchGym = async () => {
+    if (!gymId) return;
+
     const { data: props } = await API.get<GymCardProps>(`/gym/${gymId}`);
     setGym(props);
+
     if (!props) navigate('/home');
-    const { data: boulders } = await API.get(`/route/gym/${gymId}`);
-    setBoulders(boulders);
+    const { data: bouldersRes } = await API.get<Boulder[]>(`/route/gym/${gymId}`);
+    setBoulders(bouldersRes);
+
+    const {
+      data: { isAllowed },
+    } = await API.get<{ isAllowed: boolean }>(`/gym/${gymId}/assign`, {
+      headers: {
+        authorization: `Bearer ${getToken()}`,
+      },
+    });
+    console.log({ isAllowed });
+    setIsAllowedToRouteSet(isAllowed);
   };
 
   useEffect(() => {
@@ -37,9 +48,13 @@ export function Gym() {
       <div className="container">
         <header className="sticky top-0 z-10 bg-base-200">
           <h1 style={{ fontSize: '40px', fontWeight: 'bold' }}>{name}</h1>
-          <p style={{ fontSize: '12px' }}>
-            A gym in <strong>{location}</strong>, update at <strong>03.01.2024</strong>
-          </p>
+
+          {isAllowedToRouteSet && (
+            <Link to="create-route">
+              <button className="btn-outline btn">Add a new route</button>
+            </Link>
+          )}
+
           <div className="divider" />
         </header>
 

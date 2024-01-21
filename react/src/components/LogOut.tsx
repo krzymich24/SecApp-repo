@@ -1,18 +1,22 @@
-import { Link } from "react-router-dom";
-import { GymCard, GymCardProps } from "./GymCard";
-import { useEffect, useState } from "react";
-import { API } from "../api";
+import { Link, Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { GymCard, GymCardProps } from './GymCard';
+import { API } from '../api';
 
 export function LogOut() {
-
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-6xl font-bold">Logged Out</h1>
-          <p className="py-6">
-            Log in again or check <a href="#/home" style={{ textDecoration: 'underline' }}>main page</a>
-          </p>
+    <div
+      className="hero min-h-screen"
+      style={{ backgroundImage: 'url(https://i.ytimg.com/vi/U4OeUm4DJkE/maxresdefault.jpg)' }}
+    >
+      <div className="hero-overlay bg-opacity-75" />
+      <div className="hero-content text-center text-neutral-content">
+        <div className="max-w-md">
+          <h1 className="mb-5 text-5xl font-bold">Logged out!</h1>
+          <p className="mb-5">Sad to see you go 😢 We hope to see you again soon!</p>
+          <Link to="/gym">
+            <button className="btn-primary btn">Back to gyms!</button>
+          </Link>
         </div>
       </div>
     </div>

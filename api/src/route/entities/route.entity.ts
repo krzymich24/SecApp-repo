@@ -15,7 +15,7 @@ export class Route {
 
   @Column({ nullable: false }) grade: string;
 
-  @ManyToOne((type) => RouteSetter)
+  @ManyToOne((type) => RouteSetter, { eager: true })
   @JoinColumn({ name: 'author' })
   author: RouteSetter;
 }

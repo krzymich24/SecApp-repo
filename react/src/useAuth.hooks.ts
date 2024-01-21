@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { decodeToken } from 'react-jwt';
+import { Maybe } from 'typescript-functional-extensions';
 import { AuthContext } from './context';
 import { UserProfile } from './types/user';
 
@@ -7,21 +8,14 @@ export const useAuth = () => {
   const TOKEN_MAGIC_STRING = 'token';
   const [auth, setAuth] = useContext(AuthContext);
 
-  const authorizeFromSession = () => {
-    // const s_id = sessionStorage.getItem('userId');
-    // const s_capabilities = sessionStorage.getItem('userCapabilities');
-    // if (s_id && s_capabilities) {
-    //   const id = parseInt(s_id);
-    //   const capabilities = s_capabilities.split(',').map((cap) => parseInt(cap));
-    //
-    //   const user: UserProfile = { id, capabilities };
-    //   setAuth(user);
-    // }
-  };
+  const getToken = () => sessionStorage.getItem(TOKEN_MAGIC_STRING);
 
-  const getToken = () =>{
-    return sessionStorage.getItem(TOKEN_MAGIC_STRING);
-  }
+  const authorizeFromSession = () => {
+    const payload = Maybe.from(getToken()).map((token) => decodeToken(token) as UserProfile);
+    if (payload.hasNoValue) return;
+    console.warn({ payload: payload.getValueOrThrow() });
+    setAuth(payload.getValueOrThrow());
+  };
 
   const saveAuth = (userToken: string) => {
     const user: UserProfile | null | undefined = decodeToken(userToken);

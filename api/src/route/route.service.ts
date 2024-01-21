@@ -3,16 +3,23 @@ import { CreateRouteDto } from './dto/create-route.dto';
 import { Repository } from 'typeorm';
 import { Route } from './entities/route.entity';
 import { ROUTE_REPO } from './route.provider';
+import { RouteSetterService } from '../route-setter/route-setter.service';
 
 @Injectable()
 export class RouteService {
   constructor(
     @Inject(ROUTE_REPO)
     private repo: Repository<Route>,
+    private readonly setters: RouteSetterService,
   ) {}
 
-  create(createRouteDto: CreateRouteDto) {
-    return 'This action adds a new route';
+  async create({ name, grade, gym }: CreateRouteDto, person: string) {
+    const author = await this.setters.find(gym, person);
+    return this.repo.insert({
+      name,
+      grade,
+      author,
+    });
   }
 
   findAll() {

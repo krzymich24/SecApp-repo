@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   Post,
   UnauthorizedException,
@@ -78,5 +79,23 @@ export class GymController {
       throw new UnauthorizedException('Not allowed to access this route');
     console.warn(`gym/${id}/person`);
     return this.routeSetterService.listAllByGym(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get(':id/assign')
+  async isAllowed(@Param('id') id: string, @Credentials() credentials: Person) {
+    if (!credentials?.id) throw new NotFoundException();
+
+    const isAllowed = await this.routeSetterService
+      .verify(id, credentials.id)
+      .match({
+        success: () => true,
+        failure: (e) => {
+          console.error(e); // fixme: nest logger
+          return false;
+        },
+      });
+    console.log({ id, credentials, isAllowed });
+    return { isAllowed };
   }
 }
