@@ -17,6 +17,7 @@ import { NewGym } from './components/NewGym';
 import { AuthProvider } from './authProvider';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { Error } from './components/Error';
 
 const App = document.getElementById('root');
 
@@ -71,6 +72,7 @@ const Root = () => (
 
           <Route path="admin" element={<AdmView />} />
           <Route path="/logout" element={<LogOut />} />
+          <Route path="/error" element={<Error />} />
         </Route>
       </Routes>
     </HashRouter>

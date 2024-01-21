@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Hero() {
   return (
     <div
@@ -19,7 +21,9 @@ export function Hero() {
               Technology, Cybersecurity M.Sc. Programme.
             </strong>
           </p>
-          <button className="btn-primary btn">Get Started</button>
+          <Link to="/gym" className="link-hover label-text-alt link">
+            <button className="btn-primary btn">Get Started</button>
+          </Link>
         </div>
       </div>
     </div>
