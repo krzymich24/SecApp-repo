@@ -1,7 +1,22 @@
  import { useState } from 'react';
+ import { API } from "../api";
 
 export function SignIn() {
   const [username, setUsername] = useState<string>();
+  const [password, setPassword] = useState<string>();
+  const [mail, setMail] = useState<string>();
+
+  const sign = async () => {
+    try {
+      console.log('Mail:', mail);
+      console.log('Username:', username);
+      console.log('Password:', password);
+      //const { data } = await API.put(`/person/reset?password=${password}`, { password });
+      //console.log(data);
+    } catch (e) {
+      console.error((e as Error).message);
+    }
+  };
 
   return (
     <>
@@ -19,7 +34,7 @@ export function SignIn() {
                   className="input input-bordered"
                   required
                   onChange={(event) => {
-                    setUsername(event.target.value);
+                    setMail(event.target.value);
                   }}
                 />
               </div>
@@ -41,14 +56,15 @@ export function SignIn() {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="password" placeholder="password" className="input input-bordered" required />
+                <input type="password" placeholder="password" className="input input-bordered" required onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
+
+                />
               </div>
               <div className="form-control mt-6">
                 <button
-                  className="btn btn-primary"
-                  onClick={() => {
-                    console.log({ username });
-                  }}
+                  className="btn btn-primary" onClick={sign}
                 >
                   Register Now!
                 </button>
