@@ -17,6 +17,7 @@ import { NewGym } from './components/NewGym';
 import { AuthProvider } from './authProvider';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { ActivateProfile } from './components/ActivateProfile';
 import { Error } from './components/Error';
 
 const App = document.getElementById('root');
@@ -51,7 +52,7 @@ const Root = () => (
           <Route path="auth">
             <Route path="login" element={<LogIn />} />
             <Route path="register">
-              <Route path=":token" element={<SignIn />} />
+              <Route path=":token" element={<ActivateProfile />} />
               <Route path="" element={<SignIn />} />
             </Route>
             <Route path="recovery">

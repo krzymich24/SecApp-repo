@@ -1,24 +1,26 @@
 import {
   BadGatewayException,
+  Body,
   Controller,
-  Get,
-  HttpStatus,
   Logger,
   NotFoundException,
   Post,
   Put,
   Query,
-  UseGuards,
   Request,
+  UseGuards,
 } from '@nestjs/common';
 import { Person } from './person.entity';
 import { PersonService } from './person.service';
 import { sign, verify } from 'jsonwebtoken';
-import { LYRICS } from '../constants';
+import { CLIENT, LYRICS } from '../constants';
 import { Maybe } from 'typescript-functional-extensions';
 import { LocalAuthGuard } from '../auth/local-auth.guard';
 import { Request as Req } from 'express';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { join } from 'path';
+import { hashSync } from 'bcrypt';
+import { RegisterDto } from './dto/create-user.dto';
+import { ParseCredentialsPipe } from '../parse-credentials.pipe';
 
 @Controller('person')
 export class PersonController {
@@ -26,33 +28,22 @@ export class PersonController {
 
   constructor(private readonly service: PersonService) {}
 
-  // @Post()
-  // async init(): Promise<Person> {
-  //   const person = new Person();
-  //   person.username = 'admin';
-  //   person.password = 'admin';
-  //   person.email = 'admin@adm.in';
-  //   person.isAdmin = true;
-  //   person.isActive = true;
-  //   return this.service.addOne(person);
-  // }
-
   @Post('/register')
   async register(
-    @Query('email') email: string,
-    @Query('username') username: string,
-    @Query('password') password: string,
+    @Body(ParseCredentialsPipe) dto: RegisterDto,
   ): Promise<string> {
+    this.logger.debug(`Parsed Registration DTO: ${JSON.stringify(dto)}`);
     const person = new Person();
-    person.username = username;
-    person.password = password;
-    person.email = email;
+    person.username = dto.username;
+    person.password = dto.password;
+    person.email = dto.email;
     const created = await this.service.addOne(person);
     const otp = sign({ canActivate: created.id }, LYRICS);
+    const link = join(CLIENT, 'auth', 'register', otp);
     this.logger.verbose(
-      `Account activation OTP for user#${created.id}: ${otp}`,
+      `Account activation OTP for user=${created.id}: ${link}`,
     );
-    return otp;
+    return;
   }
 
   @Put('/activate')

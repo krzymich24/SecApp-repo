@@ -2,6 +2,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { PersonService } from '../person/person.service';
+import { compare, compareSync } from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,7 @@ export class AuthService {
   async validateSimpleAuth(username: string, pass: string): Promise<any> {
     this.logger.debug(`Reveived simple auth: ${username}+${pass}`);
     const user = await this.usersService.findOneByUsername(username);
-    if (user?.password !== pass) return null;
+    if (compareSync(user?.password, pass)) return null;
     const { password, ...result } = user;
     this.logger.debug(`Simple auth ok, result is ${JSON.stringify(result)}`);
     return result;

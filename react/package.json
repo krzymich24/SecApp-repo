@@ -16,6 +16,7 @@
     "react-dom": "18.2.0",
     "react-jwt": "^1.2.0",
     "react-router-dom": "6.2.1",
+    "react-spinners": "^0.13.8",
     "typescript-functional-extensions": "^2.0.0",
     "yarn": "^1.22.19"
   },
