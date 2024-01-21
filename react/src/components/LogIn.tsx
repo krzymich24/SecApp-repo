@@ -99,7 +99,7 @@ export function LogIn() {
                 }}
               />
               <label className="label">
-                <Link to="/recovery" className="link-hover label-text-alt link">
+                <Link to="../recovery" className="link-hover label-text-alt link">
                   I forgor my password?
                 </Link>
                 ·
