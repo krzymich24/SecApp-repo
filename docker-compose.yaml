@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   db:
-    container_name: "app-sec-db"
+    container_name: "boulder-line__db"
     image: "postgres"
     ports:
       - "5432:5432"

@@ -17,8 +17,6 @@ import { CLIENT, LYRICS } from '../constants';
 import { Maybe } from 'typescript-functional-extensions';
 import { LocalAuthGuard } from '../auth/local-auth.guard';
 import { Request as Req } from 'express';
-import { join } from 'path';
-import { hashSync } from 'bcrypt';
 import { RegisterDto } from './dto/create-user.dto';
 import { ParseCredentialsPipe } from '../parse-credentials.pipe';
 
@@ -39,7 +37,7 @@ export class PersonController {
     person.email = dto.email;
     const created = await this.service.addOne(person);
     const otp = sign({ canActivate: created.id }, LYRICS);
-    const link = join(CLIENT, 'auth', 'register', otp);
+    const link = `${CLIENT}/#/auth/register/${otp}`;
     this.logger.verbose(
       `Account activation OTP for user=${created.id}: ${link}`,
     );
@@ -73,9 +71,10 @@ export class PersonController {
 
     const otp = sign({ canReset: user.id }, LYRICS);
 
-    this.logger.verbose(`Password reset OTP for user#${user.id}: ${otp}`);
+    const link = `${CLIENT}/#/auth/recovery/${otp}`;
+    this.logger.verbose(`Password reset OTP for user#${user.id}: ${link}`);
 
-    return otp;
+    return;
   }
 
   @Put('/reset')
