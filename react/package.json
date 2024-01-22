@@ -1,6 +1,6 @@
 {
-  "name": "vite-react-ts-template-daisyui",
-  "version": "0.1.0",
+  "name": "app-sec-react",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
