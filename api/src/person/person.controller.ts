@@ -19,6 +19,7 @@ import { LocalAuthGuard } from '../auth/local-auth.guard';
 import { Request as Req } from 'express';
 import { RegisterDto } from './dto/create-user.dto';
 import { ParseCredentialsPipe } from '../parse-credentials.pipe';
+import { hashSync } from 'bcrypt';
 
 @Controller('person')
 export class PersonController {
@@ -88,7 +89,10 @@ export class PersonController {
 
     if (userId.hasNoValue) throw new NotFoundException();
 
-    await this.service.resetPassword(userId.getValueOrThrow(), hashSync(password,8));
+    await this.service.resetPassword(
+      userId.getValueOrThrow(),
+      hashSync(password, 8),
+    );
 
     return;
   }
