@@ -1,7 +1,8 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { ObjectId, Repository } from 'typeorm';
 import { Person } from './person.entity';
 import { PERSON_REPO } from './person.provider';
+import { Maybe } from 'typescript-functional-extensions';
 
 @Injectable()
 export class PersonService {
@@ -11,15 +12,47 @@ export class PersonService {
   ) {}
 
   async activate(id: number | string | ObjectId) {
-    return this.personRepository.update(id, { isActive: true });
+    const actions = Maybe.from(
+      await this.personRepository.findOneBy({ id: id + '' }),
+    ).map(({ actions }) => actions);
+    return this.personRepository.update(id, {
+      isActive: true,
+      actions: actions.getValueOrThrow() + 1,
+    });
   }
 
-  async resetPassword(id: number | string | ObjectId, password: string) {
-    return this.personRepository.update(id, { isActive: true, password });
+  async resetPassword(
+    id: number | string | ObjectId,
+    password: string,
+    counter: number,
+  ) {
+    const actions = Maybe.from(
+      await this.personRepository.findOneBy({ id: id + '' }),
+    )
+      .map(({ actions }) => actions)
+      .getValueOrThrow();
+
+    console.warn({ counter, actions });
+    if (actions !== counter)
+      throw new UnauthorizedException(
+        `Token is not valid for the operation you're trying to perform`,
+      );
+    await this.personRepository.update(id, {
+      isActive: true,
+      password,
+      actions: actions + 1,
+    });
+    return;
   }
 
   async deactivate(id: number | string | ObjectId) {
-    return this.personRepository.update(id, { isActive: false });
+    const actions = Maybe.from(
+      await this.personRepository.findOneBy({ id: id + '' }),
+    ).map(({ actions }) => actions);
+    return this.personRepository.update(id, {
+      isActive: false,
+      actions: actions.getValueOrThrow() + 1,
+    });
   }
 
   async findAll(): Promise<Person[]> {

@@ -19,6 +19,8 @@ export class Person {
 
   @Column({ unique: true }) email!: string;
 
+  @Column({ default: 0 }) actions: number;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt?: Date;
 }

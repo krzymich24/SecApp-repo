@@ -28,10 +28,10 @@ export class RouteController {
     return this.routeService.create(createRouteDto, cred.id + '');
   }
 
-  @Get()
-  findAll() {
-    return this.routeService.findAll();
-  }
+  // @Get()
+  // findAll() {
+  //   return this.routeService.findAll();
+  // }
 
   @Get(':id')
   findOne(@Param('id') id: string) {

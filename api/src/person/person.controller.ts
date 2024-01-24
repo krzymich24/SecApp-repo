@@ -20,12 +20,16 @@ import { Request as Req } from 'express';
 import { RegisterDto } from './dto/create-user.dto';
 import { ParseCredentialsPipe } from '../parse-credentials.pipe';
 import { hashSync } from 'bcrypt';
+import { MailerService } from '@nestjs-modules/mailer';
 
 @Controller('person')
 export class PersonController {
   private readonly logger = new Logger(PersonController.name);
 
-  constructor(private readonly service: PersonService) {}
+  constructor(
+    private readonly service: PersonService,
+    private readonly mailer: MailerService,
+  ) {}
 
   @Post('/register')
   async register(
@@ -42,6 +46,11 @@ export class PersonController {
     this.logger.verbose(
       `Account activation OTP for user=${created.id}: ${link}`,
     );
+    await this.mailer.sendMail({
+      to: person.email,
+      subject: `BoulderLine activation for ${dto.username}`,
+      html: `Hi, this is <strong>BoulderLine</strong>!<br/>Account activation has been requested for your email address.<br/>If you didn't request it, you can safely ignore this message. Otherwise, click <a href="${link}">here</a>.`,
+    });
     return;
   }
 
@@ -70,10 +79,15 @@ export class PersonController {
 
     await this.service.deactivate(user.id);
 
-    const otp = sign({ canReset: user.id }, LYRICS);
+    const otp = sign({ canReset: user.id, actions: user.actions }, LYRICS);
 
     const link = `${CLIENT}/#/auth/recovery/${otp}`;
     this.logger.verbose(`Password reset OTP for user#${user.id}: ${link}`);
+    await this.mailer.sendMail({
+      to: user.email,
+      subject: `BoulderLine password recovery for ${user.username}`,
+      html: `Hi, this is <strong>BoulderLine</strong>!<br/>Password recovery has been requested for your email address.<br/>If you didn't request it, you can safely ignore this message. Otherwise, click <a href="${link}">here</a>.`,
+    });
 
     return;
   }
@@ -82,16 +96,18 @@ export class PersonController {
   async reset(@Query('otp') otp: string, @Query('password') password: string) {
     const token = verify(otp, LYRICS);
     const userId = Maybe.from(token['canReset']);
+    const actions = Maybe.from(token['actions']);
 
     this.logger.verbose(
       `Password reset attempted for ${userId.getValueOrDefault('???')}`,
     );
 
-    if (userId.hasNoValue) throw new NotFoundException();
+    if (userId.hasNoValue && actions.hasNoValue) throw new NotFoundException();
 
     await this.service.resetPassword(
       userId.getValueOrThrow(),
       hashSync(password, 8),
+      actions.getValueOrThrow(),
     );
 
     return;

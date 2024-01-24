@@ -20,6 +20,8 @@ with database definition you'll need to run the app in development mode.
 1. Have docker and nodejs installed
 2. Run the db service from the `🌱/docker-compose.yaml`  (it will run a Postgres instance accessible on your host
    under http://localhost:5432—please make sure it's available)
+3. Run the smtp4dev from the compose file. Check if http://localhost:5050 is working: that's gonna be your email client.
+   **Also, make sure port 5050 is available for your application.**
 3. Go to `🌱/api`, install dependencies and run the server:
     ```shell
     npm install

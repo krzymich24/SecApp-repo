@@ -1,7 +1,4 @@
-import { Link, Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { GymCard, GymCardProps } from './GymCard';
-import { API } from '../api';
+import { Link } from 'react-router-dom';
 
 export function LogOut() {
   return (
